@@ -1,8 +1,9 @@
 //
 //  String+Localizable.swift
-//  Alamofire
+//  Swifty
 //
-//  Created by 王荣庆 on 2019/11/13.
+//  Created by 王荣庆 on 2019/9/14.
+//  Copyright © 2019 RyukieSama. All rights reserved.
 //
 
 import Foundation
