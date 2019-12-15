@@ -51,6 +51,25 @@ public struct SwiftyDefine {
         public static var isIphone4Style: Bool {
             return UIScreen.main.bounds.height == 480
         }
+        
+        /// Device Name
+        public static var deviceName: String {
+            return UIDevice.current.name
+        }
+    }
+    
+    public struct App {
+        public static var version: String? {
+            return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+        }
+        
+        public static var build: String? {
+            return Bundle.main.infoDictionary?["CFBundleVersion"] as? String
+        }
+        
+        public static var name: String? {
+            return Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String
+        }
     }
     
 }
