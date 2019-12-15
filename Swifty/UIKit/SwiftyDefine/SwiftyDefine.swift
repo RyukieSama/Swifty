@@ -56,6 +56,14 @@ public struct SwiftyDefine {
         public static var deviceName: String {
             return UIDevice.current.name
         }
+        
+        /// isSimulator
+        public static var isSimulator: Bool {
+            #if arch(i386) || arch(x86_64)
+            return true
+            #endif
+            return false
+        }
     }
     
     public struct App {
