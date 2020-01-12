@@ -27,6 +27,15 @@ public struct SwiftyDefine {
             return UIScreen.main.bounds.size
         }
         
+        public static var navigationHeight: CGFloat {
+            return isIphoneXSeries == true ? 88 : 64
+        }
+        
+        /// iOS 13 present 风格出来的导航条高度
+        public static var navigationSmallHeight: CGFloat {
+            return 44
+        }
+        
         /// is X series
         public static var isIphoneXSeries: Bool {
             return UIScreen.main.bounds.height >= 812
