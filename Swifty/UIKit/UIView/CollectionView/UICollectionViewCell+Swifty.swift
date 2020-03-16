@@ -10,9 +10,11 @@ import UIKit
 
 public protocol NibCollectionCellRegisterable: NibLoadable where Self: UICollectionViewCell {}
 
+public protocol CollectionReuseViewRegisterable: Identifiable where Self: UIView {}
+
 public extension Swifty where Base: UICollectionView {
     @discardableResult
-    func registerNib<T>(isNib: Bool = true, cellTypes: T.Type...) -> Base where T: NibCollectionCellRegisterable {
+    func register<T>(isNib: Bool = true, cellTypes: T.Type...) -> Base where T: NibCollectionCellRegisterable {
         if isNib {
             cellTypes.forEach { base.register($0.nib, forCellWithReuseIdentifier: $0.identifier) }
         } else {
@@ -22,8 +24,20 @@ public extension Swifty where Base: UICollectionView {
         return base
     }
     
+    @discardableResult
+    func register<T>(headerTypes: T.Type...) -> Base where T: CollectionReuseViewRegisterable {
+        headerTypes.forEach {
+            base.register($0.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: $0.identifier)
+        }
+        return base
+    }
+    
     func dequeueReusableCell<T>(for indexPath: IndexPath) -> T where T: UICollectionViewCell & Identifiable {
         return base.dequeueReusableCell(withReuseIdentifier: T.identifier, for: indexPath) as! T
+    }
+    
+    func dequeueReusableView<T>(for kind: String, indexPath: IndexPath) -> T where T: CollectionReuseViewRegisterable {
+        return base.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: T.identifier, for: indexPath) as! T
     }
 }
 

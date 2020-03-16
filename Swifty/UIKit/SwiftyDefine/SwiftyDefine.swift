@@ -76,6 +76,10 @@ public struct SwiftyDefine {
     }
     
     public struct App {
+        public static var keyWindow: UIWindow? {
+            return UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        }
+        
         public static var version: String? {
             return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         }
