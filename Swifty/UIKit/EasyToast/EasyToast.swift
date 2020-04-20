@@ -18,7 +18,7 @@ public class EasyToast {
         }
     }
     
-    public static func show(title: String? = nil, message: String? = nil, dismissTitle: String? = nil, dismissAfter: TimeInterval = 0) {
+    public static func show(title: String? = nil, message: String? = nil, dismissTitle: String? = nil, dismissAfter: TimeInterval = 0, from: UIViewController? = nil) {
         if alertVc != nil {
             dismiss()
         }
@@ -30,8 +30,10 @@ public class EasyToast {
         
         alertVc = vc
         
+        let controller = from != nil ? from : EasyToastTopViewController()
+        
         DispatchQueue.main.async {
-            EasyToastTopViewController()?.present(vc, animated: true, completion: {
+            controller?.present(vc, animated: true, completion: {
             })
         }
         if dismissAfter > 0 {

@@ -41,3 +41,16 @@ public extension Swifty where Base: UIView {
         base.frame = CGRect(x: base.frame.origin.x, y: base.frame.origin.y, width: base.frame.size.width, height: height)
     }
 }
+
+public extension UIView {
+    func shake() {
+        let animation = CAKeyframeAnimation()
+        animation.keyPath = "transform.rotation.z"
+        animation.values = [(-5.0 / 180 * M_PI), (5.0 / 180 * M_PI), (-5.0 / 180 * M_PI)]
+        animation.duration = 0.5
+        animation.repeatCount = MAXFLOAT
+        animation.isRemovedOnCompletion = false
+        animation.fillMode = .forwards
+        layer.add(animation, forKey: "swifty_shake")
+    }
+}
