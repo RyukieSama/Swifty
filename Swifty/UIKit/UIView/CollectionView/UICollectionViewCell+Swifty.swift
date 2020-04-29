@@ -14,7 +14,7 @@ public protocol CollectionReuseViewRegisterable: Identifiable where Self: UIView
 
 public extension Swifty where Base: UICollectionView {
     @discardableResult
-    func register<T>(isNib: Bool = true, cellTypes: T.Type...) -> Base where T: CollectionCellRegisterable {
+    func register<T>(isNib: Bool = false, cellTypes: T.Type...) -> Base where T: CollectionCellRegisterable {
         if isNib {
             cellTypes.forEach { base.register($0.nib, forCellWithReuseIdentifier: $0.identifier) }
         } else {

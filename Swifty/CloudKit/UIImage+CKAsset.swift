@@ -17,7 +17,7 @@ public extension UIImage {
                 do {
                     try data?.write(to: url)
                 } catch let e as NSError {
-                    print("Error! \(e)")
+//                    print("Error! \(e)")
                 }
                 return CKAsset(fileURL: url)
             }
