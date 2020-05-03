@@ -9,5 +9,8 @@
 import Foundation
 
 public extension Swifty where Base: UITextField {
-    
+    func checkLength() -> Bool {
+        
+        return true
+    }
 }
