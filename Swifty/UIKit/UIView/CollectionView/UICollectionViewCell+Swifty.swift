@@ -10,7 +10,7 @@ import UIKit
 
 public protocol CollectionCellRegisterable: NibLoadable where Self: UICollectionViewCell {}
 
-public protocol CollectionReuseViewRegisterable: Identifiable where Self: UIView {}
+public protocol CollectionReuseViewRegisterable: Identifiable where Self: UICollectionReusableView {}
 
 public extension Swifty where Base: UICollectionView {
     @discardableResult

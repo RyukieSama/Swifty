@@ -16,4 +16,29 @@ public extension UIImage {
         UIGraphicsEndImageContext()
         return image
     }
+    
+    @available(iOS 13.0, *)
+    static func systemImage(name: String, font: UIFont, scale: SymbolScale = .default) -> UIImage? {
+        let config = UIImage.SymbolConfiguration(font: font, scale: scale)
+        return UIImage(systemName: name, withConfiguration: config)
+    }
+    
+    @available(iOS 13.0, *)
+    static func systemImage(name: String, weight: SymbolWeight = .regular) -> UIImage? {
+        let config = UIImage.SymbolConfiguration(weight: weight)
+        return UIImage(systemName: name, withConfiguration: config)
+    }
+    
+    @available(iOS 13.0, *)
+    static func systemImage(name: String, pointSize: CGFloat, weight: SymbolWeight = .regular, scale: SymbolScale = .default) -> UIImage? {
+        let config = UIImage.SymbolConfiguration(pointSize: pointSize, weight: weight, scale: scale)
+        return UIImage(systemName: name, withConfiguration: config)
+    }
+    
+    @available(iOS 13.0, *)
+    static func systemImage(name: String, textStyle: UIFont.TextStyle = .body, scale: UIImage.SymbolScale = .default) -> UIImage? {
+        let config = UIImage.SymbolConfiguration(textStyle: textStyle, scale: scale)
+        return UIImage(systemName: name, withConfiguration: config)
+    }
+    
 }
