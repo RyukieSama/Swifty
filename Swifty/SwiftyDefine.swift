@@ -8,6 +8,11 @@
 
 import UIKit
 
+public typealias SwiftyAnyCallback = (Any?) -> ()
+public typealias SwiftyBoolCallback = (Bool) -> ()
+public typealias SwiftyArrayCallback = (Array<Any>?) -> ()
+public typealias SwiftyStringCallback = (String?) -> ()
+
 public struct SwiftyDefine {
     
     public struct Device {
