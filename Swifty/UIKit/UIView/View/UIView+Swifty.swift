@@ -8,6 +8,8 @@
 
 import UIKit
 
+extension UIView: SwiftyCompatible {}
+
 public extension Swifty where Base: UIView {
     var x: CGFloat {
         return base.frame.origin.x

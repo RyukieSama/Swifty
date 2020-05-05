@@ -7,3 +7,5 @@
 //
 
 import UIKit
+
+extension UIViewController: SwiftyCompatible {}

@@ -8,6 +8,8 @@
 
 import UIKit
 
+extension UIStoryboard: SwiftyCompatible {}
+
 public protocol StoryboardInitializable: Identifiable {}
 
 public extension Swifty where Base: UIStoryboard {
