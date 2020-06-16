@@ -78,6 +78,30 @@ public struct SwiftyDefine {
             #endif
             return false
         }
+        
+        /// 当前语言
+        public static var language: String {
+//            if
+//                let langs = UserDefaults.standard.value(forKey: "AppleLanguages") as? [String],
+//                let lang = langs.first
+//            {
+//                return lang
+//            }
+//            return ""
+            return Locale.current.identifier
+        }
+        
+        /// 根据当前语言获取地区
+        public static var locale: Locale {
+            return Locale(identifier: language)
+        }
+        
+        public static var country: String {
+            return Locale.current.identifier
+        }
+        
+//        public static var
+        
     }
     
     public struct App {

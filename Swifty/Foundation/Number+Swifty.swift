@@ -13,7 +13,8 @@ extension NumberFormatableProtocol where Self == Double{
     /// - Returns: 123456.0123 -> 123.45K
     /// - Parameter autoPositiveSuffix: 是否进行金额单位缩写
     public func moneyDescription(autoPositiveSuffix: Bool) -> String? {
-        let number = NSNumber(value: self)
+        let calValue = abs(self)
+        let number = NSNumber(value: calValue)
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = 2
 //        formatter.locale = .init(identifier: "en_US")
@@ -21,16 +22,20 @@ extension NumberFormatableProtocol where Self == Double{
         formatter.numberStyle = .decimal
         
         if autoPositiveSuffix == true {
-            if self > 1_000_000 {
+            if calValue > 1_000_000 {
                 formatter.multiplier = 0.000001
                 formatter.positiveSuffix = "M"
             }
-            else if self > 100_000 {
+            else if calValue > 100_000 {
                 formatter.multiplier = 0.001
                 formatter.positiveSuffix = "K"
             }
         }
         
-        return formatter.string(from: number)
+        var result = formatter.string(from: number)
+        if self < 0 {
+            result = "-" + (result ?? "")
+        }
+        return result
     }
 }

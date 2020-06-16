@@ -48,7 +48,7 @@ public extension UIView {
     func shake() {
         let animation = CAKeyframeAnimation()
         animation.keyPath = "transform.rotation.z"
-        animation.values = [(-5.0 / 180 * M_PI), (5.0 / 180 * M_PI), (-5.0 / 180 * M_PI)]
+        animation.values = [(-2.0 / 180 * M_PI), (2.0 / 180 * M_PI), (-2.0 / 180 * M_PI)]
         animation.duration = 0.5
         animation.repeatCount = MAXFLOAT
         animation.isRemovedOnCompletion = false
