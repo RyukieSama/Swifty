@@ -14,7 +14,7 @@ public protocol CollectionReuseViewRegisterable: Identifiable where Self: UIColl
 
 public extension Swifty where Base: UICollectionView {
     @discardableResult
-    func register<T>(isNib: Bool = false, cellTypes: T.Type...) -> Base where T: CollectionCellRegisterable {
+    func register(isNib: Bool = false, cellTypes: CollectionCellRegisterable.Type...) -> Base {
         if isNib {
             cellTypes.forEach { base.register($0.nib, forCellWithReuseIdentifier: $0.identifier) }
         } else {
@@ -25,14 +25,14 @@ public extension Swifty where Base: UICollectionView {
     }
     
     @discardableResult
-    func register<T>(headerTypes: T.Type...) -> Base where T: CollectionReuseViewRegisterable {
+    func register(headerTypes: CollectionReuseViewRegisterable.Type...) -> Base {
         headerTypes.forEach {
             base.register($0.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: $0.identifier)
         }
         return base
     }
     
-    func dequeueReusableCell<T>(for indexPath: IndexPath) -> T where T: UICollectionViewCell & Identifiable {
+    func dequeueReusableCell<T>(for indexPath: IndexPath) -> T where T: CollectionCellRegisterable {
         return base.dequeueReusableCell(withReuseIdentifier: T.identifier, for: indexPath) as! T
     }
     
