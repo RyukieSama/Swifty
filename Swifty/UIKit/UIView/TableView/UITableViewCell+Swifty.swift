@@ -8,18 +8,16 @@
 
 import UIKit
 
-public protocol NibTableCellRegisterable: NibLoadable where Self: UITableViewCell {}
+public protocol TableCellRegisterable: NibLoadable where Self: UITableViewCell {}
 
 public extension Swifty where Base: UITableView {
     @discardableResult
-    func registerNib<T>(cellTypes: T.Type...) -> Base where T: NibTableCellRegisterable {
-        cellTypes.forEach { base.register($0.nib, forCellReuseIdentifier: $0.identifier) }
-        return base
-    }
-    
-    @discardableResult
-    func register<T>(cellTypes: T.Type...) -> Base where T: Identifiable & UITableViewCell {
-        cellTypes.forEach { base.register($0.self, forCellReuseIdentifier: $0.identifier) }
+    func register(isNib: Bool = false, cellTypes: TableCellRegisterable.Type...) -> Base {
+        if isNib {
+            cellTypes.forEach { base.register($0.nib, forCellReuseIdentifier: $0.identifier) }
+        } else {
+            cellTypes.forEach { base.register($0.self, forCellReuseIdentifier: $0.identifier) }
+        }
         return base
     }
     

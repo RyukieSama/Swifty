@@ -42,8 +42,8 @@ extension String {
         return CGFloat((self as NSString).floatValue)
     }
     
-    public var int: Int {
-        return (self as NSString).integerValue
+    public var int: Int64 {
+        return Int64((self as NSString).integerValue)
     }
     
     public var doubleValueFromFormatted: Double? {

@@ -12,7 +12,7 @@ extension NumberFormatableProtocol where Self == Double{
     /// 返回这样的金钱格式
     /// - Returns: 123456.0123 -> 123.45K
     /// - Parameter autoPositiveSuffix: 是否进行金额单位缩写
-    public func moneyDescription(autoPositiveSuffix: Bool) -> String? {
+    public func moneyDescription(autoPositiveSuffix: Bool = true) -> String? {
         let calValue = abs(self)
         let number = NSNumber(value: calValue)
         let formatter = NumberFormatter()
