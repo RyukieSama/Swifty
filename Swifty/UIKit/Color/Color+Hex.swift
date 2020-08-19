@@ -8,6 +8,22 @@
 import Foundation
 
 public extension UIColor {
+    
+    /// 快速适配暗黑模式颜色
+    /// - Parameters:
+    ///   - defaultColor: 默认颜色
+    ///   - darkColor: 暗黑模式颜色 空 返回默认颜色
+    /// - Returns: 根据模式选择的颜色
+    @available(iOS 13.0, *)
+    static func dynamic(defaultColor: UIColor, darkColor: UIColor? = nil) -> UIColor {
+        return UIColor { (trait) -> UIColor in
+            if trait.userInterfaceStyle == .dark {
+                return darkColor ?? defaultColor
+            }
+            return defaultColor
+        }
+    }
+    
     static func hexStringToColor(hex: String, alpha: CGFloat = 1) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         

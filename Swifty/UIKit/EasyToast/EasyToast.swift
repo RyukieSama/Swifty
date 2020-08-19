@@ -19,27 +19,36 @@ public class EasyToast {
     }
     
     public static func show(title: String? = nil, message: String? = nil, dismissTitle: String? = nil, dismissAfter: TimeInterval = 0, from: UIViewController? = nil) {
+        
+        func doSomething() {
+            let vc = EasyToastViewController(title: title, message: message, preferredStyle: .alert)
+            
+            if dismissTitle?.count ?? 0 > 0 {
+                vc.addAction(UIAlertAction(title: dismissTitle, style: .cancel, handler: nil))
+            }
+            
+            alertVc = vc
+            
+            let controller = from != nil ? from : EasyToastTopViewController()
+            
+            DispatchQueue.main.async {
+                controller?.present(vc, animated: true, completion: {
+                })
+            }
+            if dismissAfter > 0 {
+                DispatchQueue.main.asyncAfter(deadline: .now() + dismissAfter) {
+                    dismiss()
+                }
+            }
+        }
+        
         if alertVc != nil {
-            dismiss()
-        }
-        let vc = EasyToastViewController(title: title, message: message, preferredStyle: .alert)
-        
-        if dismissTitle?.count ?? 0 > 0 {
-            vc.addAction(UIAlertAction(title: dismissTitle, style: .cancel, handler: nil))
-        }
-        
-        alertVc = vc
-        
-        let controller = from != nil ? from : EasyToastTopViewController()
-        
-        DispatchQueue.main.async {
-            controller?.present(vc, animated: true, completion: {
+            alertVc?.dismiss(animated: false, completion: {
+                doSomething()
             })
         }
-        if dismissAfter > 0 {
-            DispatchQueue.main.asyncAfter(deadline: .now() + dismissAfter) {
-                dismiss()
-            }
+        else {
+            doSomething()
         }
     }
 }

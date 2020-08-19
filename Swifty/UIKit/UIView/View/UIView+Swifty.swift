@@ -56,3 +56,22 @@ public extension UIView {
         layer.add(animation, forKey: "swifty_shake")
     }
 }
+
+public extension UIView {
+    public class func initFromNib<T>() -> T? {
+        let nibName = "\(T.self)"
+        return Bundle.main.loadNibNamed(nibName, owner: nil, options: nil)?.first as? T
+        /// 不用last 如果用last添加手势的话会拿到手势
+    }
+}
+
+public extension UIDevice {
+    @objc
+    public func isiPhoneXMore() -> Bool {
+        var isMore:Bool = false
+        if #available(iOS 11.0, *) {
+            isMore = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0.0 > CGFloat(0.0)
+        }
+        return isMore
+    }
+}
