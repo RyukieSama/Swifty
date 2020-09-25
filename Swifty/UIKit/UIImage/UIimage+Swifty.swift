@@ -19,7 +19,7 @@ public extension UIImage {
     
     @available(iOS 13.0, *)
     static func systemImageForNavigationItem(name: String) -> UIImage? {
-        return UIImage.systemImage(name: name, font: .systemFont(ofSize: 20))
+        return UIImage.systemImage(name: name, font: .systemFont(ofSize: 24))
     }
     
     @available(iOS 13.0, *)

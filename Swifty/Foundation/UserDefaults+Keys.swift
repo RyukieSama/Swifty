@@ -25,6 +25,19 @@ public extension UserDefaults {
     static func synchronize() {
         UserDefaults.standard.synchronize()
     }
+    
+    func save(value: Any?, key: UserDefaultsKeysProtocol) {
+        if value == nil { return }
+        setValue(value, forKey: key.key)
+    }
+    
+    func get<T>(key: UserDefaultsKeysProtocol) -> T? {
+        return value(forKey: key.key) as? T
+    }
+    
+    func delete(key: UserDefaultsKeysProtocol) {
+        removeObject(forKey: key.key)
+    }
 }
 
 public protocol UserDefaultsKeysProtocol {
