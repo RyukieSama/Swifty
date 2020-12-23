@@ -1,18 +1,15 @@
 //
-//  CollectionModuleCenterProtocol.swift
+//  TableModuleCenterProtocol.swift
 //  Swifty
 //
-//  Created by 王荣庆 on 2020/7/3.
-//  Copyright © 2020 RyukieSama. All rights reserved.
+//  Created by 王荣庆 on 2020/12/23.
 //
 
-import UIKit
+import Foundation
 
-public protocol CollectionModuleCenterProtocol where Self: NSObject {
-    static func moduleCenter<T: CollectionModuleCenterProtocol>(collectionView: UICollectionView, owner: UIViewController) -> T
-    
-    func bind(collectionView: UICollectionView, owner: UIViewController)
-    
+public protocol TableModuleCenterProtocol where Self: NSObject {
+    static func moduleCenter<T: TableModuleCenterProtocol>(tableView: UITableView, owner: UIViewController) -> T
+        
     // MARK: - Life
     func loadModules()
     func viewWillAppear()
@@ -25,24 +22,23 @@ public protocol CollectionModuleCenterProtocol where Self: NSObject {
     func footerPullToRefresh()
     
     // MARK: - Module
-    func module(for section: Int) -> CollectionModulableProtocol?
+    func module(for section: Int) -> TableModulableProtocol?
     
     /// 注意用Weak
     var owner: UIViewController? { get set }
     /// 注意用Weak
-    var collectionView: UICollectionView? { get set }
-    var adapter: CollectionModuleCenterAdapter? { get set}
-    
-    var loadedModules: [CollectionModulableProtocol] { get set }
+    var tableView: UITableView? { get set }
+    var adapter: TableModuleCenterAdapter? { get set}
+    var loadedModules: [TableModulableProtocol] { get set }
 }
 
-public extension CollectionModuleCenterProtocol {
-    static func moduleCenter<T: CollectionModuleCenterProtocol>(collectionView: UICollectionView, owner: UIViewController) -> T {
+public extension TableModuleCenterProtocol {
+    static func moduleCenter<T: TableModuleCenterProtocol>(tableView: UITableView, owner: UIViewController) -> T {
         let center = T()
         center.owner = owner
-        center.collectionView = collectionView
+        center.tableView = tableView
         center.loadModules()
-        center.adapter = CollectionModuleCenterAdapter(collectionView: collectionView, moduleCenter: center)
+        center.adapter = TableModuleCenterAdapter(table: tableView, center: center)
         return center
     }
     
@@ -81,7 +77,7 @@ public extension CollectionModuleCenterProtocol {
     }
         
     // MARK: - Module
-    func module(for section: Int) -> CollectionModulableProtocol? {
+    func module(for section: Int) -> TableModulableProtocol? {
         if section >= loadedModules.count {
             return nil
         }
