@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreGraphics
 
 public extension UIImage {
     func resize(toSize: CGSize) -> UIImage? {
@@ -44,6 +45,17 @@ public extension UIImage {
     static func systemImage(name: String, textStyle: UIFont.TextStyle = .body, scale: UIImage.SymbolScale = .default) -> UIImage? {
         let config = UIImage.SymbolConfiguration(textStyle: textStyle, scale: scale)
         return UIImage(systemName: name, withConfiguration: config)
+    }
+    
+    static func image(color: UIColor, size: CGSize) -> UIImage? {
+        let rect = CGRect(origin: .zero, size: size)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()
+        context?.setFillColor(color.cgColor)
+        context?.fill(rect)
+        let theImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return theImage
     }
     
 }
