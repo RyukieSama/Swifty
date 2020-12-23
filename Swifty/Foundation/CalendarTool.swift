@@ -48,29 +48,30 @@ public extension Calendar {
     
     /// 给出以当前时间位基准的时间区间
     /// - Parameter component: 维度
+    /// - Parameter baseDate: 基准
     /// - Returns: 区间
-    public static func currentRange(of component: Calendar.Component) -> SwiftyCalenderDateRange? {
+    public static func currentRange(of component: Calendar.Component, baseDate: Date = Date()) -> SwiftyCalenderDateRange? {
         switch component {
         case .day:
             guard
-                let star = Calendar.current.date(from: DateComponents(year: Date().year, month: Date().month, day: Date().day)),
-                let end = Calendar.current.date(from: DateComponents(year: Date().year, month: Date().month, day: Date().day + 1))
+                let star = Calendar.current.date(from: DateComponents(year: baseDate.year, month: baseDate.month, day: baseDate.day)),
+                let end = Calendar.current.date(from: DateComponents(year: baseDate.year, month: baseDate.month, day: baseDate.day + 1))
                 else {
                     return nil
             }
             return (star, end)
         case .month:
             guard
-                let star = Calendar.current.date(from: DateComponents(year: Date().year, month: Date().month, day: 1)),
-                let end = Calendar.current.date(from: DateComponents(year: Date().year, month: Date().month + 1, day: 1))
+                let star = Calendar.current.date(from: DateComponents(year: baseDate.year, month: baseDate.month, day: 1)),
+                let end = Calendar.current.date(from: DateComponents(year: baseDate.year, month: baseDate.month + 1, day: 1))
                 else {
                     return nil
             }
             return (star, end)
         case .year:
             guard
-                let star = Calendar.current.date(from: DateComponents(year: Date().year, month: 1, day: 1)),
-                let end = Calendar.current.date(from: DateComponents(year: Date().year + 1, month: 1, day: 1))
+                let star = Calendar.current.date(from: DateComponents(year: baseDate.year, month: 1, day: 1)),
+                let end = Calendar.current.date(from: DateComponents(year: baseDate.year + 1, month: 1, day: 1))
                 else {
                     return nil
             }
@@ -115,6 +116,20 @@ public extension Date {
     
     public static func tomorrow() -> Date? {
         return Calendar.current.date(byAdding: .day, value: 1, to: Date())
+    }
+    
+    public func zero() -> Date {
+        let com = Calendar.current.dateComponents([.year, .month, .day], from: self)
+        let zero = Calendar.current.date(from: com)
+        return zero ?? Date()
+    }
+    
+    public func nextDay() -> Date? {
+        return Calendar.current.date(byAdding: .day, value: 1, to: self)
+    }
+    
+    public func lastDay() -> Date? {
+        return Calendar.current.date(byAdding: .day, value: -1, to: self)
     }
     
 }
