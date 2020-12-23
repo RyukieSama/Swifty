@@ -18,10 +18,24 @@ public class EasyToast {
         }
     }
     
-    public static func show(title: String? = nil, message: String? = nil, dismissTitle: String? = nil, dismissAfter: TimeInterval = 0, from: UIViewController? = nil) {
+    public static func show(title: String? = nil, message: String? = nil, image: String? = nil, dismissTitle: String? = nil, dismissAfter: TimeInterval = 0, from: UIViewController? = nil) {
         
         func doSomething() {
-            let vc = EasyToastViewController(title: title, message: message, preferredStyle: .alert)
+            var titleString = title
+            if let _ = image {
+                titleString = ("\n\n\n\n\n" + (title ?? ""))
+            }
+            let vc = EasyToastViewController(title: titleString, message: message, preferredStyle: .alert)
+            
+            if #available(iOS 13.0, *) {
+                if
+                    let imageName = image,
+                    let centerImage = UIImage.systemImage(name: imageName, font: .systemFont(ofSize: 100, weight: .regular)) {
+                    vc.imageView.image = centerImage
+                }
+            } else {
+                // Fallback on earlier versions
+            }
             
             if dismissTitle?.count ?? 0 > 0 {
                 vc.addAction(UIAlertAction(title: dismissTitle, style: .cancel, handler: nil))
@@ -58,7 +72,7 @@ private class EasyToastViewController: UIAlertController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        setupUI()
     }
     
     // MARK: - Function-Public
@@ -68,8 +82,24 @@ private class EasyToastViewController: UIAlertController {
     
     // MARK: UI
     private func setupUI() {
-        
+        view.addSubview(imageView)
+        imageView.contentMode = .scaleAspectFill
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if #available(iOS 13.0, *) {
+            imageView.tintColor = .label
+        } else {
+            imageView.tintColor = .black
+        }
+        let fm = CGRect(x: (view.frame.width - 100) / 2.0, y: 20, width: 100, height: 100)
+        imageView.frame = fm
+        imageView.isHidden = imageView.image == nil
+    }
+    
+    var imageView: UIImageView = UIImageView()
+    
 }
 
 private func EasyToastTopViewController(base: UIViewController? = UIApplication.shared.windows.first?.rootViewController) -> UIViewController? {
