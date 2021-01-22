@@ -16,6 +16,10 @@ public typealias SwiftyStringCallback = (String?) -> ()
 public struct SwiftyDefine {
     
     public struct Device {
+        public static var safeBottomSpace: CGFloat {
+            return isIphoneXSeries ? 34 : 0
+        }
+        
         public static var screenWidth: CGFloat {
             return UIScreen.main.bounds.width
         }

@@ -59,3 +59,25 @@ public extension UIImage {
     }
     
 }
+
+// MARK: - Base64
+public extension UIImage {
+    /// 获取图片的Base64
+    /// - Returns: Base64
+    func base64String() -> String? {
+        guard let data = jpegData(compressionQuality: 1) else {
+            return nil
+        }
+        return data.base64EncodedString()
+    }
+    
+    /// 通过base64获取图片
+    /// - Parameter base64: Base64
+    /// - Returns: 图片
+    static func image(from base64: String) -> UIImage? {
+        guard let data = Data(base64Encoded: base64) else {
+            return nil
+        }
+        return UIImage(data: data)
+    }
+}

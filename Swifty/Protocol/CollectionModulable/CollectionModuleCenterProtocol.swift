@@ -10,9 +10,7 @@ import UIKit
 
 public protocol CollectionModuleCenterProtocol where Self: NSObject {
     static func moduleCenter<T: CollectionModuleCenterProtocol>(collectionView: UICollectionView, owner: UIViewController) -> T
-    
-    func bind(collectionView: UICollectionView, owner: UIViewController)
-    
+        
     // MARK: - Life
     func loadModules()
     func viewWillAppear()
