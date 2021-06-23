@@ -11,7 +11,7 @@ import UIKit
 public protocol SwiftyServiceProtocol {
     /// 请求参数
     var parameters: [AnyHashable : Any]? { get }
-    /// 默认 appUrlStr 需要替换则重写get方法即可
+    /// 域名
     var base: String { get }
     /// 路径
     var path: String { get }
