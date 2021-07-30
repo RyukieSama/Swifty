@@ -65,6 +65,7 @@ public extension UIView {
     }
 }
 
+@available(iOSApplicationExtension, unavailable)
 public extension UIDevice {
     @objc
     public func isiPhoneXMore() -> Bool {

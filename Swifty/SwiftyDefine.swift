@@ -109,6 +109,7 @@ public struct SwiftyDefine {
     }
     
     public struct App {
+        @available(iOSApplicationExtension, unavailable)
         public static var keyWindow: UIWindow? {
             return UIApplication.shared.windows.filter {$0.isKeyWindow}.first
         }

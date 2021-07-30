@@ -8,6 +8,7 @@
 
 import UIKit
 
+@available(iOSApplicationExtension, unavailable)
 public class EasyToast {
     private static var alertVc: EasyToastViewController?
     
@@ -67,6 +68,7 @@ public class EasyToast {
     }
 }
 
+@available(iOSApplicationExtension, unavailable)
 private class EasyToastViewController: UIAlertController {
     // MARK: - Life
     override func viewDidLoad() {
@@ -102,6 +104,7 @@ private class EasyToastViewController: UIAlertController {
     
 }
 
+@available(iOSApplicationExtension, unavailable)
 private func EasyToastTopViewController(base: UIViewController? = UIApplication.shared.windows.first?.rootViewController) -> UIViewController? {
     if let nav = base as? UINavigationController {
         return EasyToastTopViewController(base: nav.visibleViewController)
