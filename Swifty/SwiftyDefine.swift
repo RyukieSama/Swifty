@@ -40,6 +40,10 @@ public struct SwiftyDefine {
             return isIphoneXSeries == true ? 88 : 64
         }
         
+        public static var tabBarHeight: CGFloat {
+            return 49 + safeBottomSpace
+        }
+        
         /// iOS 13 present 风格出来的导航条高度
         public static var navigationSmallHeight: CGFloat {
             return 44
