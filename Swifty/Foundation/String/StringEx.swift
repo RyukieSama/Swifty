@@ -102,3 +102,21 @@ extension String {
         }
     }
 }
+
+extension String {
+    /// 十六进制转十进制
+    /// - Returns: 十进制
+    public func hexToDecimal() -> Int {
+        var sum:Int = 0
+        let str = uppercased()
+        for i in str.utf8 {
+            //0-9：从48开始
+            sum = sum * 16 + Int(i) - 48
+            //A-Z：从65开始
+            if i >= 65 {
+                sum -= 7
+            }
+        }
+        return sum
+    }
+}
