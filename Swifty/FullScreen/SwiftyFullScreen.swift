@@ -35,6 +35,9 @@ public extension Swifty where Base: UIViewController {
     
     public func exitFullScreen() {
         UIDevice.current.setValue(UIDeviceOrientation.portrait.rawValue, forKey: "orientation")
+    }
+    
+    public func disableFullScreen() {
         isAllowFullScreen = false
     }
 }
