@@ -21,23 +21,21 @@ public extension Swifty where Base: UIApplication {
     }
 }
 
-extension UIViewController: SwiftyCompatible {}
-
 public extension Swifty where Base: UIViewController {
-    public func needFullScreen() {
+    func needFullScreen() {
         isAllowFullScreen = true
     }
     
-    public func enterFullScreen() {
-        var deviceOrientation: UIDeviceOrientation = .landscapeLeft
+    func enterFullScreen() {
+        let deviceOrientation: UIDeviceOrientation = .landscapeLeft
         UIDevice.current.setValue(deviceOrientation.rawValue, forKey: "orientation")
     }
     
-    public func exitFullScreen() {
+    func exitFullScreen() {
         UIDevice.current.setValue(UIDeviceOrientation.portrait.rawValue, forKey: "orientation")
     }
     
-    public func disableFullScreen() {
+    func disableFullScreen() {
         isAllowFullScreen = false
     }
 }

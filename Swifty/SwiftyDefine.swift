@@ -81,21 +81,21 @@ public struct SwiftyDefine {
         
         /// isSimulator
         public static var isSimulator: Bool {
-            #if arch(i386) || arch(x86_64)
+#if arch(i386) || arch(x86_64)
             return true
-            #endif
+#endif
             return false
         }
         
         /// 当前语言
         public static var language: String {
-//            if
-//                let langs = UserDefaults.standard.value(forKey: "AppleLanguages") as? [String],
-//                let lang = langs.first
-//            {
-//                return lang
-//            }
-//            return ""
+            //            if
+            //                let langs = UserDefaults.standard.value(forKey: "AppleLanguages") as? [String],
+            //                let lang = langs.first
+            //            {
+            //                return lang
+            //            }
+            //            return ""
             return Locale.current.identifier
         }
         
@@ -108,7 +108,26 @@ public struct SwiftyDefine {
             return Locale.current.identifier
         }
         
-//        public static var
+        /// 当前设备类型 iphone ipad mac
+        public enum Devicetype{
+            case iPhone
+            case iPad
+            case Mac
+        }
+        
+        public static var deviceType: Devicetype {
+#if os(macOS)
+            return .Mac
+#else
+            if  UIDevice.current.userInterfaceIdiom == .pad {
+                return .iPad
+            }
+            else {
+                return .iPhone
+            }
+#endif
+        }
+        
         
     }
     
