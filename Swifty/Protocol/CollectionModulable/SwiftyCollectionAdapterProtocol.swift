@@ -6,6 +6,8 @@
 //  Copyright © 2020 RyukieSama. All rights reserved.
 //
 
+#if !os(macOS)
+
 import UIKit
 
 public protocol SwiftyCollectionAdapterProtocol:
@@ -15,3 +17,5 @@ public protocol SwiftyCollectionAdapterProtocol:
     // Redundant conformance constraint 'Self': 是个Swift 的 bug
     var collectionView: UICollectionView? { get set }
 }
+
+#endif

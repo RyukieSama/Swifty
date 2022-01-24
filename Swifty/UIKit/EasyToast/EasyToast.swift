@@ -6,6 +6,8 @@
 //  Copyright © 2019 RyukieSama. All rights reserved.
 //
 
+#if !os(macOS)
+
 import UIKit
 
 @available(iOSApplicationExtension, unavailable)
@@ -117,3 +119,5 @@ private func EasyToastTopViewController(base: UIViewController? = UIApplication.
     }
     return base
 }
+
+#endif

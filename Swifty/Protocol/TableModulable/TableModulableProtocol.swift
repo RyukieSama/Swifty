@@ -5,7 +5,9 @@
 //  Created by 王荣庆 on 2020/12/23.
 //
 
-import Foundation
+#if !os(macOS)
+
+import UIKit
 
 public protocol TableModulableProtocol: class {
     // MARK: - CollectionViewDataSource
@@ -65,3 +67,5 @@ public extension TableModulableProtocol {
     // MARK: - Getter
     var rowCount: Int { return 0 }
 }
+
+#endif

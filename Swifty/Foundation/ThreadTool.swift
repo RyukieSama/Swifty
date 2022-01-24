@@ -6,7 +6,7 @@
 //  Copyright © 2020 RyukieSama. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 ///  debounce函数通常称为防抖动函数，该函数会从上一次被调用后，延迟 wait 秒后调用 fn 方法
 class Debouncer {

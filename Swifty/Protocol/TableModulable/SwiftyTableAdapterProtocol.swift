@@ -5,6 +5,8 @@
 //  Created by 王荣庆 on 2020/12/23.
 //
 
+#if !os(macOS)
+
 import UIKit
 
 public protocol SwiftyTableAdapterProtocol:
@@ -13,3 +15,5 @@ public protocol SwiftyTableAdapterProtocol:
     // Redundant conformance constraint 'Self': 是个Swift 的 bug
     var tableView: UITableView? { get set }
 }
+
+#endif

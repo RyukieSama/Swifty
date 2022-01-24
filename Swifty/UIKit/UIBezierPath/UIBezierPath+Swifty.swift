@@ -6,6 +6,8 @@
 //  Copyright © 2020 RyukieSama. All rights reserved.
 //
 
+#if !os(macOS)
+
 import UIKit
 
 extension UIBezierPath: SwiftyCompatible {}
@@ -76,4 +78,4 @@ public extension UIBezierPath {
 
 }
 
-
+#endif

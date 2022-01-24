@@ -6,6 +6,8 @@
 //  Copyright © 2019 RyukieSama. All rights reserved.
 //
 
+#if !os(macOS)
+
 import UIKit
 
 public typealias SwiftyAnyCallback = (Any?) -> ()
@@ -151,3 +153,5 @@ public struct SwiftyDefine {
     }
     
 }
+
+#endif

@@ -5,7 +5,9 @@
 //  Created by 王荣庆 on 2020/12/23.
 //
 
-import Foundation
+#if !os(macOS)
+
+import UIKit
 
 public class TableModuleCenterAdapter: NSObject {
     public init(table: UITableView, center: TableModuleCenterProtocol) {
@@ -65,3 +67,5 @@ extension TableModuleCenterAdapter: SwiftyTableAdapterProtocol {
         moduleCenter?.module(for: indexPath.section)?.cellDidClick(at: indexPath)
     }
 }
+
+#endif

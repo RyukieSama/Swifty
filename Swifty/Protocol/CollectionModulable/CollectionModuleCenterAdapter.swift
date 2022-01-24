@@ -6,6 +6,8 @@
 //  Copyright © 2020 RyukieSama. All rights reserved.
 //
 
+#if !os(macOS)
+
 import UIKit
 
 public class CollectionModuleCenterAdapter: NSObject {
@@ -89,3 +91,5 @@ extension CollectionModuleCenterAdapter: SwiftyCollectionAdapterProtocol {
     }
     
 }
+
+#endif

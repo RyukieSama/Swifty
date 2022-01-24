@@ -6,7 +6,9 @@
 //  Copyright © 2019 RyukieSama. All rights reserved.
 //
 
-import Foundation
+#if !os(macOS)
+
+import UIKit
 import CloudKit
 
 public extension UIImage {
@@ -39,3 +41,5 @@ public extension UIImage {
         return nil
     }
 }
+
+#endif

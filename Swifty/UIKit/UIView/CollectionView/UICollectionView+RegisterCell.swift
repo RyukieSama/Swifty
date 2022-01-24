@@ -6,6 +6,8 @@
 //  Copyright © 2019 RyukieSama. All rights reserved.
 //
 
+#if !os(macOS)
+
 import UIKit
 
 public extension Swifty where Base: UICollectionView {
@@ -13,3 +15,5 @@ public extension Swifty where Base: UICollectionView {
         base.register(UINib(nibName: cellNibName, bundle: nil), forCellWithReuseIdentifier: cellNibName)
     }
 }
+
+#endif

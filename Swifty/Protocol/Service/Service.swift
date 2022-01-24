@@ -6,7 +6,7 @@
 //  Copyright © 2019 Swifty. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 public protocol SwiftyServiceProtocol {
     /// 请求参数
@@ -31,3 +31,4 @@ public enum SwiftyServiceMethod {
     case POST
     case GET
 }
+

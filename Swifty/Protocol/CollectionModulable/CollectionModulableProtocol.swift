@@ -6,6 +6,8 @@
 //  Copyright © 2020 RyukieSama. All rights reserved.
 //
 
+#if !os(macOS)
+
 import UIKit
 
 public protocol CollectionModulableProtocol: class {
@@ -83,3 +85,5 @@ public extension CollectionModulableProtocol {
     var referenceSizeForHeader: CGSize { return .zero }
     var sectionEdgeInsets: UIEdgeInsets { return .zero }
 }
+
+#endif

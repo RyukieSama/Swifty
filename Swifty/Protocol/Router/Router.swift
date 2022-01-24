@@ -6,6 +6,8 @@
 //  Copyright © 2019 Swifty. All rights reserved.
 //
 
+#if !os(macOS)
+
 import UIKit
 
 /**
@@ -62,3 +64,5 @@ public protocol SwiftModuleProtocol {
 
 /// 第一个为回调需要带的参数， 后面的Bool按需使用，这里单独设置一个Bool是为了在OC好处理
 public typealias SwiftModuleClosure = ((Any?, Bool) -> ())
+
+#endif

@@ -6,6 +6,8 @@
 //  Copyright © 2019 RyukieSama. All rights reserved.
 //
 
+#if !os(macOS)
+
 import UIKit
 
 // MARK: - NibLoadable
@@ -41,3 +43,5 @@ public extension NibLoadable where Self: UIView {
 //        return view
 //    }
 //}
+
+#endif

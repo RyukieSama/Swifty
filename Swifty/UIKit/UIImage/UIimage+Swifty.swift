@@ -6,6 +6,8 @@
 //  Copyright © 2019 RyukieSama. All rights reserved.
 //
 
+#if !os(macOS)
+
 import UIKit
 import CoreGraphics
 
@@ -81,3 +83,5 @@ public extension UIImage {
         return UIImage(data: data)
     }
 }
+
+#endif

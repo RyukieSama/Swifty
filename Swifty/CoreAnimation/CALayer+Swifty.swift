@@ -6,6 +6,8 @@
 //  Copyright © 2019 RyukieSama. All rights reserved.
 //
 
+#if !os(macOS)
+
 import UIKit
 
 extension CALayer: SwiftyCompatible {}
@@ -22,3 +24,5 @@ public extension Swifty where Base: CALayer {
         base.mask = mask
     }
 }
+
+#endif

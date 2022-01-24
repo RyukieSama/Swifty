@@ -6,6 +6,8 @@
 //  Copyright © 2019 RyukieSama. All rights reserved.
 //
 
+#if !os(macOS)
+
 import UIKit
 
 extension UIView: SwiftyCompatible {}
@@ -76,3 +78,5 @@ public extension UIDevice {
         return isMore
     }
 }
+
+#endif

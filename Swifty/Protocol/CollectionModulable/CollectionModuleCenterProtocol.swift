@@ -6,6 +6,8 @@
 //  Copyright © 2020 RyukieSama. All rights reserved.
 //
 
+#if !os(macOS)
+
 import UIKit
 
 public protocol CollectionModuleCenterProtocol where Self: NSObject {
@@ -86,3 +88,5 @@ public extension CollectionModuleCenterProtocol {
         return loadedModules[section]
     }
 }
+
+#endif

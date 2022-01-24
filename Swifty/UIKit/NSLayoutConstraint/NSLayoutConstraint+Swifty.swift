@@ -6,6 +6,8 @@
 //  Copyright © 2020 RyukieSama. All rights reserved.
 //
 
+#if !os(macOS)
+
 import UIKit
 
 public extension NSLayoutConstraint {
@@ -37,3 +39,5 @@ public extension NSLayoutConstraint {
         return newConstraint
     }
 }
+
+#endif

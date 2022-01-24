@@ -6,7 +6,9 @@
 //  Copyright © 2019 RyukieSama. All rights reserved.
 //
 
-import Foundation
+#if !os(macOS)
+
+import UIKit
 
 public extension Swifty where Base: UITextField {
     func checkLength() -> Bool {
@@ -14,3 +16,5 @@ public extension Swifty where Base: UITextField {
         return true
     }
 }
+
+#endif

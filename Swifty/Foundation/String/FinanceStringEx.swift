@@ -6,6 +6,8 @@
 //  Copyright © 2018年 RyukieSama. All rights reserved.
 //
 
+#if !os(macOS)
+
 import UIKit
 
 extension String {
@@ -30,3 +32,5 @@ extension String {
     }
     
 }
+
+#endif

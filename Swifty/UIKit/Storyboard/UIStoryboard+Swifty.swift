@@ -6,6 +6,8 @@
 //  Copyright © 2019 RyukieSama. All rights reserved.
 //
 
+#if !os(macOS)
+
 import UIKit
 
 extension UIStoryboard: SwiftyCompatible {}
@@ -20,3 +22,5 @@ public extension Swifty where Base: UIStoryboard {
         return controller
     }
 }
+
+#endif

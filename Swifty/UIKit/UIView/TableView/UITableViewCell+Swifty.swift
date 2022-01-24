@@ -6,6 +6,8 @@
 //  Copyright © 2019 RyukieSama. All rights reserved.
 //
 
+#if !os(macOS)
+
 import UIKit
 
 public protocol TableCellRegisterable: NibLoadable where Self: UITableViewCell {}
@@ -30,3 +32,5 @@ public extension Swifty where Base: UITableView {
     }
 }
 
+
+#endif

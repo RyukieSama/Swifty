@@ -5,7 +5,9 @@
 //  Created by 王荣庆 on 2020/12/23.
 //
 
-import Foundation
+#if !os(macOS)
+
+import UIKit
 
 public protocol TableModuleCenterProtocol where Self: NSObject {
     static func moduleCenter<T: TableModuleCenterProtocol>(tableView: UITableView, owner: UIViewController) -> T
@@ -84,3 +86,5 @@ public extension TableModuleCenterProtocol {
         return loadedModules[section]
     }
 }
+
+#endif

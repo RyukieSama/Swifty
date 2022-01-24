@@ -5,6 +5,8 @@
 //  Created by 王荣庆 on 2021/12/23.
 //
 
+#if !os(macOS)
+
 import UIKit
 
 private var isAllowFullScreen = false
@@ -39,3 +41,5 @@ public extension Swifty where Base: UIViewController {
         isAllowFullScreen = false
     }
 }
+
+#endif

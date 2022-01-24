@@ -6,6 +6,10 @@
 //  Copyright © 2019 RyukieSama. All rights reserved.
 //
 
+#if !os(macOS)
+
 import UIKit
 
 extension UIViewController: SwiftyCompatible {}
+
+#endif

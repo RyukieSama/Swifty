@@ -6,6 +6,8 @@
 //  Copyright © 2020年 Swifty. All rights reserved.
 //
 
+#if !os(macOS)
+
 import UIKit
 
 /// UIView设置链式调用协议
@@ -38,3 +40,5 @@ extension ViewChainable {
         return self
     }
 }
+
+#endif

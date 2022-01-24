@@ -6,6 +6,8 @@
 //  Copyright © 2019 RyukieSama. All rights reserved.
 //
 
+#if !os(macOS)
+
 import UIKit
 
 public protocol CollectionCellRegisterable: NibLoadable where Self: UICollectionViewCell {}
@@ -41,4 +43,4 @@ public extension Swifty where Base: UICollectionView {
     }
 }
 
-
+#endif
