@@ -1,0 +1,22 @@
+{
+  "name": "Swifty",
+  "version": "0.1.0",
+  "summary": "A short description of Swifty.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/RyukieSama/Swifty",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "RyukieSama": "ryukie.sama@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/RyukieSama/Swifty.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "Swifty/Classes/**/*"
+}
