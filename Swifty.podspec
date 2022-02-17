@@ -25,7 +25,7 @@ TODO: Add long description of the pod here.
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'RyukieSama' => 'ryukie.sama@gmail.com' }
-  s.source           = { :git => 'https://github.com/RyukieSama/Swifty.git', :tag => s.version.to_s }
+  s.source           = { :git => 'http://github.com/RyukieSama/Swifty.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '10.0'
