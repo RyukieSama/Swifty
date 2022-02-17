@@ -7,7 +7,7 @@
 #
 
 Pod::Spec.new do |s|
-  s.name         = "Ryukie.Swifty"
+  s.name         = "RyukieSwifty"
   s.summary      = "Swifty for iOS by.RyukieSama"
   s.version      = "0.1.0"
 
