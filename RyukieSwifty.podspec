@@ -56,7 +56,7 @@ TODO: Add long description of the pod here.
   s.subspec 'CloudKit' do |ss|
     ss.source_files = 'Swifty/Classes/CloudKit/**/*'
     ss.dependency 'RyukieSwifty/Core'
-    ss.frameworks = 'UIKit', 'CloudKit'
+    ss.frameworks = 'CloudKit'
   end
 
   s.subspec 'Foundation' do |ss|
