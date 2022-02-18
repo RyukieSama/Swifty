@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name         = "RyukieSwifty"
   s.summary      = "Swifty for iOS by.RyukieSama"
-  s.version      = "0.1.2"
+  s.version      = "0.1.3"
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -79,4 +79,8 @@ TODO: Add long description of the pod here.
     ss.dependency 'RyukieSwifty/Core'
   end
 
+  s.subspec 'ScreenShield' do |ss|
+    ss.source_files = 'Swifty/Classes/UIKit/UIView/View/ScreenShieldView.swift'
+  end
+  
 end

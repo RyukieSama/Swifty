@@ -11,6 +11,7 @@ target 'Swifty_Example' do
 #  pod 'RyukieSwifty/FullScreen', :path => '../'
 #  pod 'RyukieSwifty/Router', :path => '../'
 #  pod 'RyukieSwifty/SwiftyServiceProtocol', :path => '../'
+#  pod 'RyukieSwifty/ScreenShield', :path => '../'
 
   target 'Swifty_Tests' do
     inherit! :search_paths
