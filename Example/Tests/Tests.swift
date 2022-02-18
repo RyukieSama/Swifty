@@ -1,5 +1,5 @@
 import XCTest
-import Swifty
+import RyukieSwifty
 
 class Tests: XCTestCase {
     

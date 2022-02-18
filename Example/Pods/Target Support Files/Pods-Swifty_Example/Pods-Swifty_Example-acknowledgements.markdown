@@ -1,7 +1,7 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
-## Swifty
+## RyukieSwifty
 
 Copyright (c) 2022 RyukieSama <ryukie.sama@gmail.com>
 
