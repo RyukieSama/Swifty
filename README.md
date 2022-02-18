@@ -66,6 +66,8 @@ pod 'RyukieSwifty/SwiftyServiceProtocol'
 
 极其轻量化的截屏防护方案，任何需要被保护的 `View` 作为子视图放入 `ScreenShieldView` 即可达到截屏时隐藏内容的效果。
 
+![ScreenShield](ScreenShield.gif)
+
 ```ruby
 pod 'RyukieSwifty/ScreenShield'
 ```
