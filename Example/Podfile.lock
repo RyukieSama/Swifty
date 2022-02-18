@@ -4,7 +4,27 @@ PODS:
   - FBSnapshotTestCase/Core (2.1.4)
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
-  - RyukieSwifty (0.1.1)
+  - RyukieSwifty (0.1.1):
+    - RyukieSwifty/CloudKit (= 0.1.1)
+    - RyukieSwifty/Core (= 0.1.1)
+    - RyukieSwifty/Foundation (= 0.1.1)
+    - RyukieSwifty/FullScreen (= 0.1.1)
+    - RyukieSwifty/Router (= 0.1.1)
+    - RyukieSwifty/SwiftyServiceProtocol (= 0.1.1)
+    - RyukieSwifty/UIKit (= 0.1.1)
+  - RyukieSwifty/CloudKit (0.1.1):
+    - RyukieSwifty/Core
+  - RyukieSwifty/Core (0.1.1)
+  - RyukieSwifty/Foundation (0.1.1):
+    - RyukieSwifty/Core
+  - RyukieSwifty/FullScreen (0.1.1):
+    - RyukieSwifty/Core
+  - RyukieSwifty/Router (0.1.1):
+    - RyukieSwifty/Core
+  - RyukieSwifty/SwiftyServiceProtocol (0.1.1):
+    - RyukieSwifty/Core
+  - RyukieSwifty/UIKit (0.1.1):
+    - RyukieSwifty/Core
 
 DEPENDENCIES:
   - FBSnapshotTestCase (~> 2.1.4)
@@ -20,8 +40,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  RyukieSwifty: 00fb198321747441dc6a84ee56232a7026b0f133
+  RyukieSwifty: fd7c78f3d46ea87674f15ebb5ef9f73cb09a6e91
 
-PODFILE CHECKSUM: cc943e79249908c7e9ff9eb9b3cd8970ef5dbce5
+PODFILE CHECKSUM: a6e672653eec0a20187537d59f7a5c46d5c3c2c0
 
 COCOAPODS: 1.11.2

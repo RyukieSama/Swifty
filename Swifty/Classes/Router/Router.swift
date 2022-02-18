@@ -8,7 +8,7 @@
 
 #if !os(macOS)
 
-import UIKit
+import Foundation
 
 /**
  OC部分调用的接口就用 NSObject 来封装了，其他部分使用纯Swift

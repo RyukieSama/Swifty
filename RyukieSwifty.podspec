@@ -43,4 +43,40 @@ TODO: Add long description of the pod here.
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
+
+  s.subspec 'Core' do |ss|
+    ss.source_files = 'Swifty/Classes/Core/**/*'
+  end
+
+  s.subspec 'UIKit' do |ss|
+    ss.source_files = 'Swifty/Classes/UIKit/**/*'
+    ss.dependency 'RyukieSwifty/Core'
+  end
+
+  s.subspec 'CloudKit' do |ss|
+    ss.source_files = 'Swifty/Classes/CloudKit/**/*'
+    ss.dependency 'RyukieSwifty/Core'
+    ss.frameworks = 'UIKit', 'CloudKit'
+  end
+
+  s.subspec 'Foundation' do |ss|
+    ss.source_files = 'Swifty/Classes/Foundation/**/*'
+    ss.dependency 'RyukieSwifty/Core'
+  end
+
+  s.subspec 'FullScreen' do |ss|
+    ss.source_files = 'Swifty/Classes/FullScreen/**/*'
+    ss.dependency 'RyukieSwifty/Core'
+  end
+
+  s.subspec 'Router' do |ss|
+    ss.source_files = 'Swifty/Classes/Router/**/*'
+    ss.dependency 'RyukieSwifty/Core'
+  end
+
+  s.subspec 'SwiftyServiceProtocol' do |ss|
+    ss.source_files = 'Swifty/Classes/SwiftyServiceProtocol/**/*'
+    ss.dependency 'RyukieSwifty/Core'
+  end
+
 end

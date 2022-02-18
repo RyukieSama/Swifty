@@ -4,6 +4,13 @@ platform :ios, '10.0'
 
 target 'Swifty_Example' do
   pod 'RyukieSwifty', :path => '../'
+#  pod 'RyukieSwifty/Core', :path => '../'
+#  pod 'RyukieSwifty/UIKit', :path => '../'
+#  pod 'RyukieSwifty/CloudKit', :path => '../'
+#  pod 'RyukieSwifty/Foundation', :path => '../'
+#  pod 'RyukieSwifty/FullScreen', :path => '../'
+#  pod 'RyukieSwifty/Router', :path => '../'
+#  pod 'RyukieSwifty/SwiftyServiceProtocol', :path => '../'
 
   target 'Swifty_Tests' do
     inherit! :search_paths
