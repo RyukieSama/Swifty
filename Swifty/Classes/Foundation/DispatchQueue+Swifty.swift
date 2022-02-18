@@ -42,7 +42,7 @@ final class Spin: Lockable {
     }
 }
 
-protocol Lockable: class {
+protocol Lockable: AnyObject {
     func lock()
     func unlock()
 }

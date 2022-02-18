@@ -11,7 +11,7 @@ public extension Array {
     /// 去重
     /// - Parameter filter: 去重的值
     /// - Returns: 结果 left 剩下的 out 提出的
-    public func filterDuplicates<E: Equatable>(_ filter: (Element) -> E) -> FilterDuplicatesResults {
+    func filterDuplicates<E: Equatable>(_ filter: (Element) -> E) -> FilterDuplicatesResults {
         var result = [Element]()
         var out = [Element]()
         for value in self {

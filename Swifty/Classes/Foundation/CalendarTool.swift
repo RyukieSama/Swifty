@@ -13,21 +13,21 @@ public typealias SwiftyCalenderDateRange = (start: Date, end: Date)
 
 public extension Calendar {
     /// 当前年
-    public static let currentYear = Calendar.current.component(.year, from: Date())
+    static let currentYear = Calendar.current.component(.year, from: Date())
     
-    public static func year(of date: Date) -> Int {
+    static func year(of date: Date) -> Int {
         return Calendar.current.component(.year, from: date)
     }
     
-    public static func weekDay(of date: Date) -> Int {
+    static func weekDay(of date: Date) -> Int {
         return Calendar.current.component(.weekday, from: date)
     }
     
-    public static func day(of date: Date) -> Int {
+    static func day(of date: Date) -> Int {
         return Calendar.current.component(.day, from: date)
     }
     
-    public static func month(of date: Date) -> Int {
+    static func month(of date: Date) -> Int {
         return Calendar.current.component(.month, from: date)
     }
     
@@ -50,7 +50,7 @@ public extension Calendar {
     /// - Parameter component: 维度
     /// - Parameter baseDate: 基准
     /// - Returns: 区间
-    public static func currentRange(of component: Calendar.Component, baseDate: Date = Date()) -> SwiftyCalenderDateRange? {
+    static func currentRange(of component: Calendar.Component, baseDate: Date = Date()) -> SwiftyCalenderDateRange? {
         switch component {
         case .day:
             guard
@@ -104,31 +104,31 @@ public extension Date {
         return Calendar.current.isDateInToday(self)
     }
     
-    public func sameDay(date: Date) -> Bool {
+    func sameDay(date: Date) -> Bool {
         return Calendar.current.isDate(self, inSameDayAs: date)
     }
     
-    public static func todayZero() -> Date {
+    static func todayZero() -> Date {
         let com = Calendar.current.dateComponents([.year, .month, .day], from: Date())
         let zero = Calendar.current.date(from: com)
         return zero ?? Date()
     }
     
-    public static func tomorrow() -> Date? {
+    static func tomorrow() -> Date? {
         return Calendar.current.date(byAdding: .day, value: 1, to: Date())
     }
     
-    public func zero() -> Date {
+    func zero() -> Date {
         let com = Calendar.current.dateComponents([.year, .month, .day], from: self)
         let zero = Calendar.current.date(from: com)
         return zero ?? Date()
     }
     
-    public func nextDay() -> Date? {
+    func nextDay() -> Date? {
         return Calendar.current.date(byAdding: .day, value: 1, to: self)
     }
     
-    public func lastDay() -> Date? {
+    func lastDay() -> Date? {
         return Calendar.current.date(byAdding: .day, value: -1, to: self)
     }
     

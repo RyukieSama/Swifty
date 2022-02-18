@@ -85,8 +85,9 @@ public struct SwiftyDefine {
         public static var isSimulator: Bool {
 #if arch(i386) || arch(x86_64)
             return true
-#endif
+            #else
             return false
+#endif
         }
         
         /// 当前语言

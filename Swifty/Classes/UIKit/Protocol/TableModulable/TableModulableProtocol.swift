@@ -9,7 +9,7 @@
 
 import UIKit
 
-public protocol TableModulableProtocol: class {
+public protocol TableModulableProtocol: AnyObject {
     // MARK: - CollectionViewDataSource
     func cellFor(indexPath: IndexPath, tableView: UITableView) -> UITableViewCell
     func registCell(to tableView: UITableView)

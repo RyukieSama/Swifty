@@ -60,7 +60,7 @@ extension String {
         if RegularExpressionValidate.phoneNum(self).isMatched {
             return self.prefix(3) + "****" + self.suffix(4)
         } else if RegularExpressionValidate.email(self).isMatched {
-            guard let index = self.index(of: "@") else { return self }
+            guard let index = self.firstIndex(of: "@") else { return self }
             return self.prefix(upTo: index).prefix(3) + "*" + self.suffix(from: index)
         }
         

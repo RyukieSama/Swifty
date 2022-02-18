@@ -10,7 +10,7 @@
 
 import UIKit
 
-public protocol CollectionModulableProtocol: class {
+public protocol CollectionModulableProtocol: AnyObject {
     // MARK: - CollectionViewDataSource
     func cellForIndexPath(indexPath: IndexPath, collectionView: UICollectionView) -> UICollectionViewCell
     func registCellToCollectionView(to collectionView: UICollectionView)

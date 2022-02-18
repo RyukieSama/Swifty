@@ -18,7 +18,7 @@ public extension UIImage {
             if let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(NSUUID().uuidString + ".dat") {
                 do {
                     try data?.write(to: url)
-                } catch let e as NSError {
+                } catch _ as NSError {
 //                    print("Error! \(e)")
                 }
                 return CKAsset(fileURL: url)

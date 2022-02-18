@@ -11,7 +11,7 @@
 import UIKit
 
 // MARK: - NibLoadable
-public protocol NibLoadable: class, Identifiable {
+public protocol NibLoadable: AnyObject, Identifiable {
     static var nibName: String { get }
     static var nib: UINib { get }
 }

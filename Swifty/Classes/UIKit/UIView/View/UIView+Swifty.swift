@@ -50,7 +50,7 @@ public extension UIView {
     func shake() {
         let animation = CAKeyframeAnimation()
         animation.keyPath = "transform.rotation.z"
-        animation.values = [(-2.0 / 180 * M_PI), (2.0 / 180 * M_PI), (-2.0 / 180 * M_PI)]
+        animation.values = [(-2.0 / 180 * .pi), (2.0 / 180 * .pi), (-2.0 / 180 * .pi)]
         animation.duration = 0.5
         animation.repeatCount = MAXFLOAT
         animation.isRemovedOnCompletion = false
@@ -60,7 +60,7 @@ public extension UIView {
 }
 
 public extension UIView {
-    public class func initFromNib<T>() -> T? {
+    class func initFromNib<T>() -> T? {
         let nibName = "\(T.self)"
         return Bundle.main.loadNibNamed(nibName, owner: nil, options: nil)?.first as? T
         /// 不用last 如果用last添加手势的话会拿到手势
@@ -70,7 +70,7 @@ public extension UIView {
 @available(iOSApplicationExtension, unavailable)
 public extension UIDevice {
     @objc
-    public func isiPhoneXMore() -> Bool {
+    func isiPhoneXMore() -> Bool {
         var isMore:Bool = false
         if #available(iOS 11.0, *) {
             isMore = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0.0 > CGFloat(0.0)
