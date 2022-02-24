@@ -72,6 +72,20 @@ pod 'RyukieSwifty/SwiftyServiceProtocol'
 pod 'RyukieSwifty/ScreenShield'
 ```
 
+Demo: 
+
+```Swift
+import UIKit
+import RyukieSwifty
+
+class ViewController: UIViewController {
+    override func loadView() {
+        view = ScreenShieldView.create()
+    }
+    ...
+}
+```
+
 ## Author
 
 RyukieSama, ryukie.sama@gmail.com
