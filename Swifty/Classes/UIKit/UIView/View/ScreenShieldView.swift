@@ -12,6 +12,7 @@ import UIKit
 
 @available(iOS 10.0, *)
 public class ScreenShieldView: UIView {
+    @objc
     public static func create(frame: CGRect = .zero) -> ScreenShieldView {
         return ScreenShieldView(frame: frame)
     }

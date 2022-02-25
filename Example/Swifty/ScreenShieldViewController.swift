@@ -25,7 +25,6 @@ class ScreenShieldViewController: UIViewController {
         view.addSubview(cube)
         
         view.backgroundColor = .gray
-        navigationItem.title = "ScreenShieldView"
     }
 
     override func didReceiveMemoryWarning() {

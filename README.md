@@ -72,7 +72,7 @@ pod 'RyukieSwifty/SwiftyServiceProtocol'
 pod 'RyukieSwifty/ScreenShield'
 ```
 
-Demo: 
+Swift - Demo: 
 
 ```Swift
 import UIKit
@@ -84,6 +84,35 @@ class ViewController: UIViewController {
     }
     ...
 }
+```
+
+OC - Demo:
+
+```C++
+#import "OCScreenShieldViewController.h"
+@import RyukieSwifty;
+
+@interface OCScreenShieldViewController ()
+
+@end
+
+@implementation OCScreenShieldViewController
+
+- (void)loadView {
+    self.view = [ScreenShieldView createWithFrame:UIScreen.mainScreen.bounds];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    UIView *cubeView = [[UIView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+    cubeView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:cubeView];
+    
+    self.view.backgroundColor = [UIColor grayColor];
+}
+
+@end
 ```
 
 ## Author
