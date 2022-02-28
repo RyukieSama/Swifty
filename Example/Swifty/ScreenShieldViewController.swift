@@ -12,7 +12,12 @@ import RyukieSwifty
 class ScreenShieldViewController: UIViewController {
     
     override func loadView() {
-        view = ScreenShieldView.create()
+        if #available(iOS 13.0, *) {
+            view = ScreenShieldView.create()
+        }
+        else {
+            super.loadView()
+        }
     }
     
     override func viewDidLoad() {

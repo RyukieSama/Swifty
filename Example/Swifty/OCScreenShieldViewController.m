@@ -16,7 +16,11 @@
 @implementation OCScreenShieldViewController
 
 - (void)loadView {
-    self.view = [ScreenShieldView createWithFrame:UIScreen.mainScreen.bounds];
+    if (@available(iOS 13.0, *)) {
+        self.view = [ScreenShieldView createWithFrame:UIScreen.mainScreen.bounds];
+    } else {
+        [super loadView];
+    }
 }
 
 - (void)viewDidLoad {
