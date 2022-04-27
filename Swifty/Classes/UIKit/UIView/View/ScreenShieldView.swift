@@ -58,6 +58,10 @@ public class ScreenShieldView: UIView {
     }
     
     private func makeSecureView() -> UIView? {
+        guard isOSVersionSafe else {
+            return nil
+        }
+        
         let field = UITextField()
         field.isSecureTextEntry = true
         let fv = field.subviews.first
@@ -75,6 +79,25 @@ public class ScreenShieldView: UIView {
     }
     
     private var safeZone: UIView?
+    
+    // Some OS version may crash, ignore them before there is a better way.
+    private var unsafeOSVersion: [String] {
+        ["15.1"]
+    }
+    
+    private var osVersion: String {
+        UIDevice.current.systemVersion
+    }
+    
+    private var isOSVersionSafe: Bool {
+        for version in unsafeOSVersion {
+            if osVersion.contains(version) {
+                return false
+            }
+        }
+        return true
+    }
+    
 }
 
 #endif
