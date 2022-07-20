@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A00D65D288812A800DD8BDA /* SwiftyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00D65C288812A800DD8BDA /* SwiftyTableViewController.swift */; };
+		4A00D662288814E600DD8BDA /* UIViewChainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00D661288814E600DD8BDA /* UIViewChainController.swift */; };
+		4A00D6642888152000DD8BDA /* UIViewChainEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00D6632888152000DD8BDA /* UIViewChainEx.swift */; };
 		4A6B15B627C8E1CA002FE02D /* OCScreenShieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6B15B527C8E1CA002FE02D /* OCScreenShieldViewController.m */; };
 		4AEB65B827C77FE8001FA9CE /* ScreenShieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEB65B727C77FE7001FA9CE /* ScreenShieldViewController.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -31,6 +34,9 @@
 
 /* Begin PBXFileReference section */
 		1AF9C4A17B1B7CC66BB7059A /* Pods-Swifty_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swifty_Example.debug.xcconfig"; path = "Target Support Files/Pods-Swifty_Example/Pods-Swifty_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		4A00D65C288812A800DD8BDA /* SwiftyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyTableViewController.swift; sourceTree = "<group>"; };
+		4A00D661288814E600DD8BDA /* UIViewChainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewChainController.swift; sourceTree = "<group>"; };
+		4A00D6632888152000DD8BDA /* UIViewChainEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewChainEx.swift; sourceTree = "<group>"; };
 		4A4716CC2886C121008F0888 /* RyukieSwifty.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = RyukieSwifty.podspec; path = ../RyukieSwifty.podspec; sourceTree = "<group>"; };
 		4A4716CD2886C1DE008F0888 /* README-EN.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = "README-EN.md"; path = "../README-EN.md"; sourceTree = "<group>"; };
 		4A6B15B327C8E1CA002FE02D /* Swifty_Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Swifty_Example-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -79,19 +85,38 @@
 		4A00D659288810BE00DD8BDA /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				4A00D65A288810D200DD8BDA /* ScreenShield */,
+				4A00D6602888146300DD8BDA /* UIViewChain */,
+				4A00D65F288812D700DD8BDA /* ScreenShield */,
+				4A00D65E288812BC00DD8BDA /* UITableView */,
 			);
 			name = Modules;
 			sourceTree = "<group>";
 		};
-		4A00D65A288810D200DD8BDA /* ScreenShield */ = {
+		4A00D65E288812BC00DD8BDA /* UITableView */ = {
+			isa = PBXGroup;
+			children = (
+				4A00D65C288812A800DD8BDA /* SwiftyTableViewController.swift */,
+			);
+			path = UITableView;
+			sourceTree = "<group>";
+		};
+		4A00D65F288812D700DD8BDA /* ScreenShield */ = {
 			isa = PBXGroup;
 			children = (
 				4A6B15B427C8E1CA002FE02D /* OCScreenShieldViewController.h */,
 				4A6B15B527C8E1CA002FE02D /* OCScreenShieldViewController.m */,
 				4AEB65B727C77FE7001FA9CE /* ScreenShieldViewController.swift */,
 			);
-			name = ScreenShield;
+			path = ScreenShield;
+			sourceTree = "<group>";
+		};
+		4A00D6602888146300DD8BDA /* UIViewChain */ = {
+			isa = PBXGroup;
+			children = (
+				4A00D661288814E600DD8BDA /* UIViewChainController.swift */,
+				4A00D6632888152000DD8BDA /* UIViewChainEx.swift */,
+			);
+			path = UIViewChain;
 			sourceTree = "<group>";
 		};
 		607FACC71AFB9204008FA782 = {
@@ -301,10 +326,12 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Swifty_Example/Pods-Swifty_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/RyukieSwifty/RyukieSwifty.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RyukieSwifty.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -382,7 +409,10 @@
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				4A00D662288814E600DD8BDA /* UIViewChainController.swift in Sources */,
 				4AEB65B827C77FE8001FA9CE /* ScreenShieldViewController.swift in Sources */,
+				4A00D65D288812A800DD8BDA /* SwiftyTableViewController.swift in Sources */,
+				4A00D6642888152000DD8BDA /* UIViewChainEx.swift in Sources */,
 				4A6B15B627C8E1CA002FE02D /* OCScreenShieldViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

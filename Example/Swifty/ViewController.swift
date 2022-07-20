@@ -12,6 +12,7 @@ import RyukieSwifty
 enum ExampleTypes: String, CaseIterable {
     case ScreenShield
     case ScreenShieldOC
+    case TableView
 }
 
 class ViewController: UIViewController {
@@ -34,18 +35,18 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = ExampleTypes.allCases[indexPath.row]
+        var vc: UIViewController?
         switch item {
         case .ScreenShield:
-            let vc = ScreenShieldViewController()
-            vc.navigationItem.title = item.rawValue
-            navigationController?.pushViewController(vc, animated: true)
+            vc = ScreenShieldViewController()
         case .ScreenShieldOC:
-            let vc = OCScreenShieldViewController()
-            vc.navigationItem.title = item.rawValue
-            navigationController?.pushViewController(vc, animated: true)
-//        default:
-//            return
+            vc = OCScreenShieldViewController()
+        case .TableView:
+            vc = SwiftyTableViewController()
         }
+        guard let vc = vc else { return }
+        vc.navigationItem.title = item.rawValue
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

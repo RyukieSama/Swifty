@@ -3,6 +3,7 @@ use_frameworks!
 platform :ios, '10.0'
 
 target 'Swifty_Example' do
+  pod 'SnapKit', '~> 5.0.0'
   pod 'RyukieSwifty', :path => '../'
 #  pod 'RyukieSwifty/Core', :path => '../'
 #  pod 'RyukieSwifty/UIKit', :path => '../'
