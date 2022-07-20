@@ -76,6 +76,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A00D659288810BE00DD8BDA /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				4A00D65A288810D200DD8BDA /* ScreenShield */,
+			);
+			name = Modules;
+			sourceTree = "<group>";
+		};
+		4A00D65A288810D200DD8BDA /* ScreenShield */ = {
+			isa = PBXGroup;
+			children = (
+				4A6B15B427C8E1CA002FE02D /* OCScreenShieldViewController.h */,
+				4A6B15B527C8E1CA002FE02D /* OCScreenShieldViewController.m */,
+				4AEB65B727C77FE7001FA9CE /* ScreenShieldViewController.swift */,
+			);
+			name = ScreenShield;
+			sourceTree = "<group>";
+		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
@@ -102,9 +120,7 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
-				4AEB65B727C77FE7001FA9CE /* ScreenShieldViewController.swift */,
-				4A6B15B427C8E1CA002FE02D /* OCScreenShieldViewController.h */,
-				4A6B15B527C8E1CA002FE02D /* OCScreenShieldViewController.m */,
+				4A00D659288810BE00DD8BDA /* Modules */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
