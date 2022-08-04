@@ -16,11 +16,10 @@ class Debouncer {
     fileprivate let semaphore: DispatchSemaphoreWrapper
     fileprivate var workItem: DispatchWorkItem?
     
-    
     public init(label: String, interval: Float, qos: DispatchQoS = .userInteractive) {
         self.interval         = .milliseconds(Int(interval * 1000))
         self.label         = label
-        self.queue = DispatchQueue(label: "com.azizi.debouncer.internalqueue.\(label)", qos: qos)
+        self.queue = DispatchQueue(label: "com.swifty.debouncer.internalqueue.\(label)", qos: qos)
         self.semaphore = DispatchSemaphoreWrapper(withValue: 1)
     }
     

@@ -18,22 +18,36 @@ public extension NotificationNameProtocol where Self.RawValue == String {
 }
 
 extension NotificationCenter {
-    /// 快速发送通知
+    
+    /// Easy post notification with default NotificationCenter
     /// - Parameters:
-    ///   - notiString: 通知String
-    ///   - anObject: 对象
-    ///   - aUserInfo: UserInfo
-    public static func post(notification notiString: String, object anObject: Any? = nil, userInfo aUserInfo: [AnyHashable : Any]? = nil) {
-        NotificationCenter.default.post(name: Notification.Name(notiString), object: anObject, userInfo: aUserInfo)
+    ///   - notiString: notiString
+    ///   - object: object
+    ///   - userInfo: userInfo
+    public static func post(notification notiString: String, object: Any? = nil, userInfo: [AnyHashable : Any]? = nil) {
+        NotificationCenter.default.post(name: Notification.Name(notiString), object: object, userInfo: userInfo)
     }
     
-    /// 快速添加通知
+    /// Add observer for notification
     /// - Parameters:
-    ///   - observer: 观察者
-    ///   - aSelector: selector
-    ///   - notiString: 通知String
-    ///   - anObject: 对象
-    public static func addObserver(_ observer: Any, selector aSelector: Selector, notification notiString: String, object anObject: Any? = nil) {
-        NotificationCenter.default.addObserver(observer, selector: aSelector, name: Notification.Name(rawValue: notiString), object: anObject)
+    ///   - observer: observer
+    ///   - selector: selector
+    ///   - notiString: notiString
+    ///   - object: object
+    public static func addObserver(_ observer: Any, selector: Selector, notification notiString: String, object: Any? = nil) {
+        NotificationCenter.default.addObserver(observer, selector: selector, name: Notification.Name(rawValue: notiString), object: object)
+    }
+
+    
+    /// Add observer for muti notification
+    /// - Parameters:
+    ///   - observer: observer
+    ///   - aSelector: aSelector
+    ///   - notiStrings: notifications
+    ///   - anObject: anObject
+    public static func addObserver(_ observer: Any, selector aSelector: Selector, notifications notiStrings: [String], object anObject: Any? = nil) {
+        notiStrings.forEach {
+            NotificationCenter.default.addObserver(observer, selector: aSelector, name: Notification.Name(rawValue: $0), object: anObject)
+        }
     }
 }
