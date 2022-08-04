@@ -11,11 +11,11 @@ import UIKit
 
 public extension UIColor {
 
-    /// 快速适配暗黑模式颜色
+    /// Dynamic between dark mode and default mode
     /// - Parameters:
-    ///   - defaultColor: 默认颜色
-    ///   - darkColor: 暗黑模式颜色 空 返回默认颜色
-    /// - Returns: 根据模式选择的颜色
+    ///   - defaultColor: default color
+    ///   - darkColor: dark mode color
+    /// - Returns: color
     @available(iOS 13.0, *)
     static func dynamic(defaultColor: UIColor, darkColor: UIColor? = nil) -> UIColor {
         return UIColor { (trait) -> UIColor in
@@ -25,7 +25,12 @@ public extension UIColor {
             return defaultColor
         }
     }
-
+    
+    /// Get UIColor from HEX string like #D8D8D8
+    /// - Parameters:
+    ///   - hex: hex String
+    ///   - alpha: alpha description
+    /// - Returns: UIColor
     static func hexStringToColor(hex: String, alpha: CGFloat = 1) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
 
@@ -34,7 +39,7 @@ public extension UIColor {
         }
 
         if ((cString.count) != 6) {
-            return UIColor.gray
+            return .clear
         }
 
         var rgbValue:UInt64 = 0
@@ -44,6 +49,20 @@ public extension UIColor {
             red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
             green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
             blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: alpha
+        )
+    }
+    
+    /// Get UIColor from HEX value like 0xD8D8D8
+    /// - Parameters:
+    ///   - hex: hex description
+    ///   - alpha: alpha
+    /// - Returns: UIColor
+    static func hexValueToColor(hex: UInt32, alpha: CGFloat = 1.0) -> UIColor {
+        return UIColor(
+            red: CGFloat((hex & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((hex & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(hex & 0x0000FF) / 255.0,
             alpha: alpha
         )
     }
@@ -60,7 +79,6 @@ public extension UIColor {
     import UIKit
     typealias Color = UIColor
 #endif
-
 
 extension Color
 {
