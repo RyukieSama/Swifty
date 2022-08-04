@@ -18,7 +18,7 @@ public extension NSLayoutConstraint {
      - returns: NSLayoutConstraint
     */
     @discardableResult
-    func setMultiplier(multiplier:CGFloat) -> NSLayoutConstraint {
+    func setMultiplier(multiplier: CGFloat) -> NSLayoutConstraint {
 
         NSLayoutConstraint.deactivate([self])
 
