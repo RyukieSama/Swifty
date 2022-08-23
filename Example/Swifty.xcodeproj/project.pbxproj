@@ -37,7 +37,7 @@
 		4A00D65C288812A800DD8BDA /* SwiftyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyTableViewController.swift; sourceTree = "<group>"; };
 		4A00D661288814E600DD8BDA /* UIViewChainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewChainController.swift; sourceTree = "<group>"; };
 		4A00D6632888152000DD8BDA /* UIViewChainEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewChainEx.swift; sourceTree = "<group>"; };
-		4A4716CC2886C121008F0888 /* RyukieSwifty.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = RyukieSwifty.podspec; path = ../RyukieSwifty.podspec; sourceTree = "<group>"; };
+		4A4716CC2886C121008F0888 /* RyukieSwifty.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = RyukieSwifty.podspec; path = ../RyukieSwifty.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		4A4716CD2886C1DE008F0888 /* README-EN.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = "README-EN.md"; path = "../README-EN.md"; sourceTree = "<group>"; };
 		4A6B15B327C8E1CA002FE02D /* Swifty_Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Swifty_Example-Bridging-Header.h"; sourceTree = "<group>"; };
 		4A6B15B427C8E1CA002FE02D /* OCScreenShieldViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCScreenShieldViewController.h; sourceTree = "<group>"; };
