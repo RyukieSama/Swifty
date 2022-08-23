@@ -57,6 +57,71 @@ public class ScreenShieldView: UIView {
         safe.addSubview(view)
     }
     
+    public override func insertSubview(_ view: UIView, belowSubview siblingSubview: UIView) {
+        guard
+            let safe = safeZone,
+            view != safeZone
+        else {
+            super.insertSubview(view, belowSubview: siblingSubview)
+            return
+        }
+        safe.insertSubview(view, belowSubview: siblingSubview)
+    }
+    
+    public override func insertSubview(_ view: UIView, aboveSubview siblingSubview: UIView) {
+        guard
+            let safe = safeZone,
+            view != safeZone
+        else {
+            super.insertSubview(view, aboveSubview: siblingSubview)
+            return
+        }
+        safe.insertSubview(view, aboveSubview: siblingSubview)
+    }
+    
+    public override func insertSubview(_ view: UIView, at index: Int) {
+        guard
+            let safe = safeZone,
+            view != safeZone
+        else {
+            super.insertSubview(view, at: index)
+            return
+        }
+        safe.insertSubview(view, at: index)
+    }
+    
+    public override func exchangeSubview(at index1: Int, withSubviewAt index2: Int) {
+        guard
+            let safe = safeZone
+        else {
+            super.exchangeSubview(at: index1, withSubviewAt: index2)
+            return
+        }
+        safe.exchangeSubview(at: index1, withSubviewAt: index2)
+    }
+    
+    public override func bringSubviewToFront(_ view: UIView) {
+        guard
+            let safe = safeZone,
+            view != safeZone
+        else {
+            super.bringSubviewToFront(view)
+            return
+        }
+        safe.bringSubviewToFront(view)
+    }
+    
+    public override func sendSubviewToBack(_ view: UIView) {
+        guard
+            let safe = safeZone,
+            view != safeZone
+        else {
+            super.sendSubviewToBack(view)
+            return
+        }
+        safe.sendSubviewToBack(view)
+    }
+    
     private func makeSecureView() -> UIView? {
         guard isOSVersionSafe else {
             return nil
