@@ -12,7 +12,8 @@ import UIKit
 
 public protocol SwiftyCollectionAdapterProtocol:
     UICollectionViewDelegate,
-    UICollectionViewDataSource {
+    UICollectionViewDataSource,
+    UICollectionViewDelegateFlowLayout {
     // Redundant conformance constraint 'Self': 是个Swift 的 bug
     var collectionView: UICollectionView? { get set }
 }

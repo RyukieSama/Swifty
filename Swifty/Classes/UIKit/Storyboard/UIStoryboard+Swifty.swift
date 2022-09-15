@@ -15,7 +15,7 @@ extension UIStoryboard: SwiftyCompatible {}
 public protocol StoryboardInitializable: Identifiable {}
 
 public extension Swifty where Base: UIStoryboard {
-    func controller<T>(_ controllerType: T.Type) -> T where T: StoryboardInitializable {
+     func controller<T>(_ controllerType: T.Type) -> T where T: StoryboardInitializable {
         guard let controller = base.instantiateViewController(withIdentifier: T.identifier) as? T else {
             fatalError("Couldn't instantiate view controlelr with identifier \(T.identifier)")
         }
