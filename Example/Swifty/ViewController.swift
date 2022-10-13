@@ -13,6 +13,20 @@ enum ExampleTypes: String, CaseIterable {
     case ScreenShield
     case ScreenShieldOC
     case TableView
+    case FullScreen
+    
+    func createController() -> UIViewController {
+        switch self {
+        case .ScreenShield:
+            return ScreenShieldViewController()
+        case .ScreenShieldOC:
+            return OCScreenShieldViewController()
+        case .TableView:
+            return SwiftyTableViewController()
+        case .FullScreen:
+            return FullScreenViewController()
+        }
+    }
 }
 
 class ViewController: UIViewController {
@@ -35,16 +49,7 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = ExampleTypes.allCases[indexPath.row]
-        var vc: UIViewController?
-        switch item {
-        case .ScreenShield:
-            vc = ScreenShieldViewController()
-        case .ScreenShieldOC:
-            vc = OCScreenShieldViewController()
-        case .TableView:
-            vc = SwiftyTableViewController()
-        }
-        guard let vc = vc else { return }
+        let vc = item.createController()
         vc.navigationItem.title = item.rawValue
         navigationController?.pushViewController(vc, animated: true)
     }

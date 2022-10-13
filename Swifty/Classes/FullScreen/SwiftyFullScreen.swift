@@ -19,27 +19,50 @@ extension UIApplication: SwiftyCompatible {}
 
 public extension Swifty where Base: UIApplication {
     var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return SwiftyFullScreen.canFullScreen ? [.portrait, .landscape] : [.portrait]
+        return SwiftyFullScreen.canFullScreen ? [.all] : [.portrait]
     }
 }
 
+@available(iOSApplicationExtension, unavailable)
 public extension Swifty where Base: UIViewController {
+    /// 开启横竖屏 Enable fullscreen
     func needFullScreen() {
         isAllowFullScreen = true
     }
     
     func enterFullScreen() {
-        let deviceOrientation: UIDeviceOrientation = .landscapeLeft
-        UIDevice.current.setValue(deviceOrientation.rawValue, forKey: "orientation")
+        guard #available(iOS 16.0, *) else {
+            UIDevice.current.setValue(UIDeviceOrientation.landscapeLeft.rawValue, forKey: "orientation")
+            return
+        }
+        switchMode(full: true)
     }
     
     func exitFullScreen() {
-        UIDevice.current.setValue(UIDeviceOrientation.portrait.rawValue, forKey: "orientation")
+        guard #available(iOS 16.0, *) else {
+            UIDevice.current.setValue(UIDeviceOrientation.portrait.rawValue, forKey: "orientation")
+            return
+        }
+        switchMode(full: false)
+    }
+    
+    @available(iOS 16.0, *)
+    private func switchMode(full: Bool) {
+        guard
+            let scence = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        else {
+            return
+        }
+        let orientation: UIInterfaceOrientationMask = full ? .landscape : .portrait
+        let geometryPreferencesIOS = UIWindowScene.GeometryPreferences.iOS(interfaceOrientations: orientation)
+        scence.requestGeometryUpdate(geometryPreferencesIOS) { error in
+        }
     }
     
     func disableFullScreen() {
         isAllowFullScreen = false
     }
 }
+
 
 #endif

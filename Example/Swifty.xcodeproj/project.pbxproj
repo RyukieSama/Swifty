@@ -11,6 +11,7 @@
 		4A00D662288814E600DD8BDA /* UIViewChainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00D661288814E600DD8BDA /* UIViewChainController.swift */; };
 		4A00D6642888152000DD8BDA /* UIViewChainEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00D6632888152000DD8BDA /* UIViewChainEx.swift */; };
 		4A6B15B627C8E1CA002FE02D /* OCScreenShieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6B15B527C8E1CA002FE02D /* OCScreenShieldViewController.m */; };
+		4A970A5528F69ACD00A1EF12 /* FullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A970A5428F69ACD00A1EF12 /* FullScreenViewController.swift */; };
 		4AEB65B827C77FE8001FA9CE /* ScreenShieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEB65B727C77FE7001FA9CE /* ScreenShieldViewController.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -42,6 +43,7 @@
 		4A6B15B327C8E1CA002FE02D /* Swifty_Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Swifty_Example-Bridging-Header.h"; sourceTree = "<group>"; };
 		4A6B15B427C8E1CA002FE02D /* OCScreenShieldViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCScreenShieldViewController.h; sourceTree = "<group>"; };
 		4A6B15B527C8E1CA002FE02D /* OCScreenShieldViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCScreenShieldViewController.m; sourceTree = "<group>"; };
+		4A970A5428F69ACD00A1EF12 /* FullScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenViewController.swift; sourceTree = "<group>"; };
 		4AEB65B727C77FE7001FA9CE /* ScreenShieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenShieldViewController.swift; sourceTree = "<group>"; };
 		4F750B31E25159932FB1494C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		5F4B8879809EC4340AE8CA8C /* Pods-Swifty_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swifty_Tests.release.xcconfig"; path = "Target Support Files/Pods-Swifty_Tests/Pods-Swifty_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 		4A00D659288810BE00DD8BDA /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				4A970A5128F699C200A1EF12 /* FullScreen */,
 				4A00D6602888146300DD8BDA /* UIViewChain */,
 				4A00D65F288812D700DD8BDA /* ScreenShield */,
 				4A00D65E288812BC00DD8BDA /* UITableView */,
@@ -117,6 +120,14 @@
 				4A00D6632888152000DD8BDA /* UIViewChainEx.swift */,
 			);
 			path = UIViewChain;
+			sourceTree = "<group>";
+		};
+		4A970A5128F699C200A1EF12 /* FullScreen */ = {
+			isa = PBXGroup;
+			children = (
+				4A970A5428F69ACD00A1EF12 /* FullScreenViewController.swift */,
+			);
+			path = FullScreen;
 			sourceTree = "<group>";
 		};
 		607FACC71AFB9204008FA782 = {
@@ -410,6 +421,7 @@
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				4A00D662288814E600DD8BDA /* UIViewChainController.swift in Sources */,
+				4A970A5528F69ACD00A1EF12 /* FullScreenViewController.swift in Sources */,
 				4AEB65B827C77FE8001FA9CE /* ScreenShieldViewController.swift in Sources */,
 				4A00D65D288812A800DD8BDA /* SwiftyTableViewController.swift in Sources */,
 				4A00D6642888152000DD8BDA /* UIViewChainEx.swift in Sources */,
