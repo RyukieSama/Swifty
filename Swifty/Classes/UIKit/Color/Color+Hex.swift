@@ -10,7 +10,35 @@
 import UIKit
 
 public extension UIColor {
+    
+    func toRGBA() -> (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+        guard let components = self.cgColor.components else { return (0, 0, 0, 0) }
+        let red = components.count > 0 ? components[0] : 0
+        let green = components.count > 1 ? components[1] : 0
+        let blue = components.count > 2 ? components[2] : 0
+        let alpha = components.count > 3 ? components[3] : 1
+        return (red, green, blue, alpha)
+    }
 
+    /// 转 16 进制字符串
+    /// - Returns: 16 进制字符串
+    func toHexString() -> String {
+        guard let components = self.cgColor.components else { return "FFFFFF" }
+        let r = Float(components[0])
+        let g = Float(components[1])
+        let b = Float(components[2])
+        let a = Float(components[3])
+        let hexString = String(format: "%02lX%02lX%02lX", lroundf(r * 255), lroundf(g * 255), lroundf(b * 255))
+        return hexString
+    }
+    
+    /// 生成随机颜色
+    /// - Parameter alpla: 透明度
+    /// - Returns: 颜色
+    static func random(alpla: CGFloat = 1) -> UIColor {
+        UIColor(red: CGFloat(arc4random_uniform(256)) / 255, green: CGFloat(arc4random_uniform(256)) / 255, blue: CGFloat(arc4random_uniform(256)) / 255, alpha: alpla)
+    }
+    
     /// Dynamic between dark mode and default mode
     /// - Parameters:
     ///   - defaultColor: default color
