@@ -28,7 +28,20 @@ extension String {
     }
     
     public var encodeUrl : String? {
-        return addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+        return addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+    }
+    
+    public var fromUTF8String: String? {
+        let tempStr1 = replacingOccurrences(of: "\\u", with: "\\U")
+        let tempStr2 = tempStr1.replacingOccurrences(of: "\"", with: "\\\"")
+        let tempStr3 = "\"".appending(tempStr2).appending("\"")
+        guard
+            let tempData = tempStr3.data(using: String.Encoding.utf8),
+                var returnStr = try? PropertyListSerialization.propertyList(from: tempData, options: [.mutableContainers], format: nil) as? String
+        else {
+            return nil
+        }
+        return returnStr.replacingOccurrences(of: "\\r\\n", with: "\n")
     }
     
 }
