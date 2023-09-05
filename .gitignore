@@ -67,3 +67,5 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
+Example/.DS_Store
+Swifty/Classes/UIKit/.DS_Store

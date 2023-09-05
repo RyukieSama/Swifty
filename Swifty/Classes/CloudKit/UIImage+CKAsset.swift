@@ -27,7 +27,7 @@ public extension UIImage {
         }
     }
     
-    static func image(fromRecord record: CKRecord,forAssetKey key: String) -> UIImage? {
+    static func image(fromRecord record: CKRecord, forAssetKey key: String) -> UIImage? {
         if let asset = record[key] as? CKAsset, let url = asset.fileURL {
             do {
                 let data = try Data(contentsOf: url)
