@@ -1,18 +1,17 @@
 //
-//  UITextField+Swifty.swift
-//  Swifty
+//  UITextView+Ex.swift
+//  RyukieSwifty
 //
-//  Created by 王荣庆 on 2019/11/14.
-//  Copyright © 2019 RyukieSama. All rights reserved.
+//  Created by wrq on 2024/4/15.
 //
 
 #if !os(macOS)
 
 import UIKit
 
-public extension Swifty where Base: UITextField {
-    // MARK: 限制字数的输入(提示在：- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string; 里面调用)
-    /// 限制字数的输入
+public extension Swifty where Base: UITextView {
+    // MARK: 限制字数的输入(可配置正则)(提示在：- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text;方法里面调用)
+    /// 限制字数的输入(可配置正则)
     /// - Parameters:
     ///   - range: 范围
     ///   - text: 输入的文字
@@ -37,12 +36,12 @@ public extension Swifty where Base: UITextField {
                 if let weakRegex = regex, !RegexHelper.match(text, pattern: weakRegex) {
                     return false
                 }
+                // 联想选中键盘
                 let markedRange = rangeFromTextRange(textRange: markedTextRange)
                 // 联想选中键盘
                 let allContent = oldContent.swifty.replacingCharacters(range: markedRange) + text
                 if allContent.count > maxCharacters  {
                     let newContent = allContent.swifty.sub(to: maxCharacters)
-                    // print("content1：\(allContent) content2：\(newContent)")
                     self.base.text = newContent
                     return false
                 }
@@ -55,20 +54,26 @@ public extension Swifty where Base: UITextField {
             if let weakRegex = regex, !RegexHelper.match(text, pattern: weakRegex) {
                 return false
             }
+            // print("没有range---------：NO 内容：\(oldContent) 长度：\(oldContent.count) 新的内容：\(text) 长度：\(text.count) range：\(range)")
             // 2、如果数字大于指定位数，不能输入
             guard oldContent.count + text.count <= maxCharacters else {
+                // 判断字符串是否要截取
+                guard isInterceptString else {
+                    // 不截取，也就是不让输入进去
+                    return false
+                }
                 if oldContent.count < maxCharacters {
                     let remainingLength = maxCharacters - oldContent.count
                     let copyString = text.swifty.removeBeginEndAllSapcefeed
-                    // print("范围：\(range) copy的字符串：\(copyString) 长度：\(copyString.count)  截取的字符串：\(copyString.jk.sub(to: remainingLength))")
+                    // print("范围：\(range) copy的字符串：\(copyString) 长度：\(copyString.count)  截取的字符串：\(copyString.swifty.sub(to: remainingLength))")
                     // 可以插入字符串
                     let replaceContent = copyString.swifty.sub(to: remainingLength)
-                    // let newString = oldContent.jk.insertString(content: replaceContent), locat: range.location)
+                    // let newString = oldContent.swifty.insertString(content: replaceContent, locat: range.location)
                     let newString = oldContent.swifty.replacingCharacters(range: range, replacingString: replaceContent)
                     // print("老的字符串：\(oldContent) 新的的字符串：\(newString) 长度：\(newString.count)")
                     self.base.text = newString
                     // 异步改变
-                    SwiftyAsyncs.asyncDelay(0.5) {} _: {
+                    SwiftyAsyncs.asyncDelay(0.05) {} _: {
                         if let selectedRange = self.base.selectedTextRange {
                             if let newPosition = self.base.position(from: selectedRange.start, offset: remainingLength) {
                                 self.base.selectedTextRange = self.base.textRange(from: newPosition, to: newPosition)
@@ -93,3 +98,4 @@ public extension Swifty where Base: UITextField {
 }
 
 #endif
+
