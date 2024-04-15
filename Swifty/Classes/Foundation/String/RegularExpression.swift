@@ -1,9 +1,9 @@
 //
 //  RegularExpression.swift
-//  sgj
+//  Swifty
 //
-//  Created by roy on 2017/11/24.
-//  Copyright © 2017年 feidee. All rights reserved.
+//  Created by wrq on 2017/11/24.
+//  Copyright © 2017年 swifty. All rights reserved.
 //
 
 import Foundation
@@ -50,7 +50,7 @@ public enum RegularExpressionValidate {
             currObject = str
         }
         
-        let predicate =  NSPredicate(format: "SELF MATCHES %@" ,predicateStr)
+        let predicate = NSPredicate(format: "SELF MATCHES %@" ,predicateStr)
         return predicate.evaluate(with: currObject)
     }
 }

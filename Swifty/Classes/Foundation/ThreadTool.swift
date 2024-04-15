@@ -17,8 +17,8 @@ class Debouncer {
     fileprivate var workItem: DispatchWorkItem?
     
     public init(label: String, interval: Float, qos: DispatchQoS = .userInteractive) {
-        self.interval         = .milliseconds(Int(interval * 1000))
-        self.label         = label
+        self.interval = .milliseconds(Int(interval * 1000))
+        self.label = label
         self.queue = DispatchQueue(label: "com.swifty.debouncer.internalqueue.\(label)", qos: qos)
         self.semaphore = DispatchSemaphoreWrapper(withValue: 1)
     }
@@ -49,7 +49,6 @@ public struct DispatchSemaphoreWrapper {
         return try execute()
     }
 }
-
 
 /// 节流函数，在 wait 秒内最多执行 fn 一次的函数。与deboucne不同的是，throttle会有一个阀值，当到达阀值时，fn一定会执行。
 public class Throttler {
