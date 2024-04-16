@@ -11,6 +11,30 @@
 import UIKit
 import CoreGraphics
 
+extension UIImage: SwiftyCompatible {}
+
+public extension Swifty where Base: UIImage {
+    /// 循环压缩接近尺寸限制
+    /// - Parameter mb: 文件 MB
+    /// - Returns: Data
+    func compressImage(to mb: Int) -> Data? {
+        var compression: CGFloat = 1.0
+        let maxFileSize: Int = mb * 1024 * 1024 // xx MB
+
+        if var imageData = base.jpegData(compressionQuality: compression) {
+            while imageData.count > maxFileSize, compression > 0.1 {
+                compression -= 0.1
+                if let newImageData = base.jpegData(compressionQuality: compression) {
+                    imageData = newImageData
+                }
+            }
+            return imageData
+        }
+        
+        return nil
+    }
+}
+
 public extension UIImage {
     func resize(toSize: CGSize) -> UIImage? {
         UIGraphicsBeginImageContext(toSize)
