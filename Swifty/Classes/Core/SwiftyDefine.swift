@@ -18,6 +18,10 @@ public typealias SwiftyStringCallback = (String?) -> ()
 public struct SwiftyDefine {
     
     public struct Device {
+        public static var isPad: Bool {
+            UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad
+        }
+        
         public static var safeBottomSpace: CGFloat {
             return isIphoneXSeries ? 34 : 0
         }
