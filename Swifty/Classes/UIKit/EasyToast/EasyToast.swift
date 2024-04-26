@@ -21,7 +21,13 @@ public class EasyToast {
         }
     }
     
-    public static func show(title: String? = nil, message: String? = nil, image: String? = nil, dismissTitle: String? = nil, dismissAfter: TimeInterval = 0, from: UIViewController? = nil) {
+    public static func show(title: String? = nil, 
+                            message: String? = nil,
+                            image: String? = nil,
+                            dismissTitle: String? = nil,
+                            dismissAfter: TimeInterval = 0,
+                            from: UIViewController? = nil,
+                            tintColor: UIColor? = nil) {
         
         func doSomething() {
             var titleString = title
@@ -29,6 +35,10 @@ public class EasyToast {
                 titleString = ("\n\n\n\n\n" + (title ?? ""))
             }
             let vc = EasyToastViewController(title: titleString, message: message, preferredStyle: .alert)
+            
+            if let tintColor = tintColor {
+                vc.view.tintColor = tintColor
+            }
             
             if #available(iOS 13.0, *) {
                 if
