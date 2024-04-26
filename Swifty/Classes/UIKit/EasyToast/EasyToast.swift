@@ -34,7 +34,7 @@ public class EasyToast {
             if let _ = image {
                 titleString = ("\n\n\n\n\n" + (title ?? ""))
             }
-            let vc = EasyToastViewController(title: titleString, message: message, preferredStyle: .alert)
+            let vc = EasyToastViewController(title: titleString ?? "", message: message, preferredStyle: .alert)
             
             if let tintColor = tintColor {
                 vc.view.tintColor = tintColor
