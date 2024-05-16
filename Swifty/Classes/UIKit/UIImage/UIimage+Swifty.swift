@@ -13,17 +13,40 @@ import CoreGraphics
 
 extension UIImage: SwiftyCompatible {}
 
+private let baseCompression: CGFloat = 0.5
+
 public extension Swifty where Base: UIImage {
+    
     /// 循环压缩接近尺寸限制
     /// - Parameter mb: 文件 MB
     /// - Returns: Data
-    func compressImage(to mb: Int) -> Data? {
-        var compression: CGFloat = 1.0
+    func compressImage(to mb: Int, deta: Double = 0.1) -> Data? {
+        var compression: CGFloat = baseCompression
         let maxFileSize: Int = mb * 1024 * 1024 // xx MB
 
         if var imageData = base.jpegData(compressionQuality: compression) {
             while imageData.count > maxFileSize, compression > 0.1 {
-                compression -= 0.1
+                compression -= deta
+                if let newImageData = base.jpegData(compressionQuality: compression) {
+                    imageData = newImageData
+                }
+            }
+            return imageData
+        }
+        
+        return nil
+    }
+    
+    /// 循环压缩接近尺寸限制
+    /// - Parameter mb: 文件 MB
+    /// - Returns: Data
+    func compressImage(to mb: Double, deta: Double = 0.1) -> Data? {
+        var compression: CGFloat = baseCompression
+        let maxFileSize: Double = mb * 1024.0 * 1024.0 // xx MB
+
+        if var imageData = base.jpegData(compressionQuality: compression) {
+            while Double(imageData.count) > maxFileSize, compression > 0.1 {
+                compression -= deta
                 if let newImageData = base.jpegData(compressionQuality: compression) {
                     imageData = newImageData
                 }
