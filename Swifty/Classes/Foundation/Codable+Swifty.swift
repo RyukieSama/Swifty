@@ -7,6 +7,39 @@
 
 import Foundation
 
+public extension Array where Element: Codable {
+    func swifty_toJsonString() -> String {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        
+        do {
+            let jsonData = try encoder.encode(self)
+            if let jsonString = String(data: jsonData, encoding: .utf8) {
+                SwiftyLog(jsonString)
+                return jsonString
+            }
+        } catch {
+            SwiftyLog("Error encoding JSON: \(error)")
+        }
+        return ""
+    }
+    
+    static func swifty_toCodableArray(_ json: String) -> [Element] {
+        let decoder = JSONDecoder()
+
+        do {
+            if let jsonData = json.data(using: .utf8) {
+                let persons = try decoder.decode([Element].self, from: jsonData)
+                return persons
+            }
+        } catch {
+            SwiftyLog("Error decoding JSON: \(error)")
+        }
+        
+        return []
+    }
+}
+
 public protocol SwiftyCodableProtocol where Self: Codable {
     func swifty_toJsonString() -> String?
     func swifty_toJsonDic() -> [String: Any]?
@@ -74,5 +107,4 @@ public extension SwiftyCodableProtocol {
             return nil
         }
     }
-
 }
