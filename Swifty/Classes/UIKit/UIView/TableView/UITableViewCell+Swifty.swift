@@ -13,6 +13,12 @@ import UIKit
 public protocol TableCellRegisterable: NibLoadable where Self: UITableViewCell {}
 
 public extension Swifty where Base: UITableView {
+    func reloadWithouAnimation() {
+        UIView.performWithoutAnimation {
+            self.base.reloadData()
+        }
+    }
+    
     @discardableResult
     func register(isNib: Bool = false, cellTypes: TableCellRegisterable.Type...) -> Base {
         if isNib {
