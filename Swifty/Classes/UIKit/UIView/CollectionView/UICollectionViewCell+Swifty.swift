@@ -15,6 +15,12 @@ public protocol CollectionCellRegisterable: NibLoadable where Self: UICollection
 public protocol CollectionReuseViewRegisterable: Identifiable where Self: UICollectionReusableView {}
 
 public extension Swifty where Base: UICollectionView {
+    func reloadWithouAnimation() {
+        UIView.performWithoutAnimation {
+            self.base.reloadData()
+        }
+    }
+    
     @discardableResult
     func register(isNib: Bool = false, cellTypes: CollectionCellRegisterable.Type...) -> Base {
         if isNib {
