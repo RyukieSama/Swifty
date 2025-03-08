@@ -79,4 +79,18 @@ public extension UIDevice {
     }
 }
 
+@available(iOSApplicationExtension, unavailable)
+public extension UIView {
+    func snapshotWithTransparentBackground() -> UIImage? {
+        let rendererFormat = UIGraphicsImageRendererFormat()
+        rendererFormat.opaque = false // 关键：确保背景透明
+        rendererFormat.scale = UIScreen.main.scale
+        
+        let renderer = UIGraphicsImageRenderer(size: self.bounds.size, format: rendererFormat)
+        return renderer.image { _ in
+            self.drawHierarchy(in: self.bounds, afterScreenUpdates: true)
+        }
+    }
+}
+
 #endif
