@@ -18,6 +18,11 @@ public typealias SwiftyStringCallback = (String?) -> ()
 public struct SwiftyDefine {
     
     public struct Device {
+        public static func makeImpactFeedback(_ style: UIImpactFeedbackGenerator.FeedbackStyle = .light) {
+            let generator = UIImpactFeedbackGenerator(style: style)
+            generator.impactOccurred()
+        }
+        
         public static var isPad: Bool {
             UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad
         }
