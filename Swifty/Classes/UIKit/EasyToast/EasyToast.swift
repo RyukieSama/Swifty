@@ -15,67 +15,70 @@ public class EasyToast {
     private static var alertVc: EasyToastViewController?
     
     public static func dismiss() {
-        if alertVc != nil {
-            alertVc?.dismiss(animated: true, completion: nil)
-            alertVc = nil
+        DispatchQueue.main.async {
+            if alertVc != nil {
+                alertVc?.dismiss(animated: true, completion: nil)
+                alertVc = nil
+            }
         }
     }
     
-    public static func show(title: String? = nil, 
+    public static func show(title: String? = nil,
                             message: String? = nil,
                             image: String? = nil,
                             dismissTitle: String? = nil,
                             dismissAfter: TimeInterval = 0,
                             from: UIViewController? = nil,
                             tintColor: UIColor? = nil) {
-        
-        func doSomething() {
-            var titleString = title
-            if let _ = image {
-                titleString = ("\n\n\n\n\n" + (title ?? ""))
-            }
-            let vc = EasyToastViewController(title: titleString ?? "", message: message, preferredStyle: .alert)
-            
-            if let tintColor = tintColor {
-                vc.view.tintColor = tintColor
-            }
-            
-            if #available(iOS 13.0, *) {
-                if
-                    let imageName = image,
-                    let centerImage = UIImage.systemImage(name: imageName, font: .systemFont(ofSize: 100, weight: .regular)) {
-                    vc.imageView.image = centerImage
+        DispatchQueue.main.async {
+            func doSomething() {
+                var titleString = title
+                if let _ = image {
+                    titleString = ("\n\n\n\n\n" + (title ?? ""))
                 }
-            } else {
-                // Fallback on earlier versions
+                let vc = EasyToastViewController(title: titleString ?? "", message: message, preferredStyle: .alert)
+                
+                if let tintColor = tintColor {
+                    vc.view.tintColor = tintColor
+                }
+                
+                if #available(iOS 13.0, *) {
+                    if
+                        let imageName = image,
+                        let centerImage = UIImage.systemImage(name: imageName, font: .systemFont(ofSize: 100, weight: .regular)) {
+                        vc.imageView.image = centerImage
+                    }
+                } else {
+                    // Fallback on earlier versions
+                }
+                
+                if dismissTitle?.count ?? 0 > 0 {
+                    vc.addAction(UIAlertAction(title: dismissTitle, style: .cancel, handler: nil))
+                }
+                
+                alertVc = vc
+                
+                let controller = from != nil ? from : EasyToastTopViewController()
+                
+                DispatchQueue.main.async {
+                    controller?.present(vc, animated: true, completion: {
+                    })
+                }
+                if dismissAfter > 0 {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + dismissAfter) {
+                        dismiss()
+                    }
+                }
             }
             
-            if dismissTitle?.count ?? 0 > 0 {
-                vc.addAction(UIAlertAction(title: dismissTitle, style: .cancel, handler: nil))
-            }
-            
-            alertVc = vc
-            
-            let controller = from != nil ? from : EasyToastTopViewController()
-            
-            DispatchQueue.main.async {
-                controller?.present(vc, animated: true, completion: {
+            if alertVc != nil {
+                alertVc?.dismiss(animated: false, completion: {
+                    doSomething()
                 })
             }
-            if dismissAfter > 0 {
-                DispatchQueue.main.asyncAfter(deadline: .now() + dismissAfter) {
-                    dismiss()
-                }
-            }
-        }
-        
-        if alertVc != nil {
-            alertVc?.dismiss(animated: false, completion: {
+            else {
                 doSomething()
-            })
-        }
-        else {
-            doSomething()
+            }
         }
     }
 }
