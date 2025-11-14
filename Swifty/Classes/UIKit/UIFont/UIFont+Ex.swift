@@ -87,7 +87,7 @@ public extension UIFont {
             return UIFont.systemFont(ofSize: size, weight: weight)
         }
         
-        if family == .sfMono {
+        if #available(iOS 13.0, *), family == .sfMono {
             if italic {
                 return UIFont.monospacedSystemFont(ofSize: size, weight: weight)
                     .withTraits(.traitItalic)
