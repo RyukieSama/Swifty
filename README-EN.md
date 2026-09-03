@@ -1,198 +1,158 @@
-# Swifty - Make swift code swifty
+# RyukieSwifty
 
-[中文](README.md) | English
+[中文](README.md) | [English](README-EN.md)
 
-[![CI Status](https://img.shields.io/travis/RyukieSama/RyukieSwifty.svg?style=flat)](https://travis-ci.org/RyukieSama/RyukieSwifty)
-[![Version](https://img.shields.io/cocoapods/v/RyukieSwifty.svg?style=flat)](https://cocoapods.org/pods/RyukieSwifty)
-[![License](https://img.shields.io/cocoapods/l/RyukieSwifty.svg?style=flat)](https://cocoapods.org/pods/RyukieSwifty)
-[![Platform](https://img.shields.io/cocoapods/p/Swifty.svg?style=flat)](https://cocoapods.org/pods/RyukieSwifty)
+[![CocoaPods](https://img.shields.io/cocoapods/v/RyukieSwifty.svg?style=flat-square)](https://cocoapods.org/pods/RyukieSwifty)
+[![Platform](https://img.shields.io/cocoapods/p/RyukieSwifty.svg?style=flat-square)](https://cocoapods.org/pods/RyukieSwifty)
+[![Swift](https://img.shields.io/badge/Swift-5.0-orange.svg?style=flat-square)](https://swift.org)
+[![License](https://img.shields.io/cocoapods/l/RyukieSwifty.svg?style=flat-square)](LICENSE)
 
-## 1. Example
+A lightweight, modular collection of Swift utilities and extensions for writing cleaner, more expressive iOS code.
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+RyukieSwifty provides commonly used helpers for Foundation, UIKit, CloudKit, interface orientation, module routing, network service abstractions, and screen-capture protection. Install the complete library or select only the subspecs your project needs.
 
-## 2. All install
+## Features
+
+- **Modular installation** — include only the functionality your project needs
+- **Foundation extensions** — convenient helpers for strings, dates, collections, `Codable`, and `UserDefaults`
+- **UIKit utilities** — chainable view configuration, nib loading, modular lists, colors, images, and more
+- **Orientation management** — control interface orientation through a consistent API
+- **Screen-capture protection** — protect sensitive view content during screenshots and screen recordings
+- **Lightweight abstractions** — protocol-based routing and networking APIs with no required third-party implementation
+
+## Requirements
+
+- Swift 5.0+
+- iOS 10.0+
+- ScreenShield: iOS 13.0+
+
+## Installation
+
+### CocoaPods
+
+Add the complete library to your `Podfile`:
 
 ```ruby
 pod 'RyukieSwifty'
 ```
 
-## 3. Subspec install
+Then run:
 
-### 3.1 UIKit Extension
-
-```ruby
-pod 'RyukieSwifty/UIKit'
+```bash
+pod install
 ```
 
-### 3.2 CloudKit Extension
+### Install individual subspecs
 
-```ruby
-pod 'RyukieSwifty/CloudKit'
-```
+| Subspec | Description |
+| --- | --- |
+| `Core` | Namespace, shared definitions, and logging utilities |
+| `Foundation` | Foundation extensions, formatting, and asynchronous utilities |
+| `UIKit` | UIKit extensions, chainable configuration, and modular list components |
+| `CloudKit` | Conversion utilities for `UIImage` and `CKAsset` |
+| `FullScreen` | Full-screen and interface-orientation management |
+| `Router` | Protocol-based module routing |
+| `SwiftyServiceProtocol` | Network-library-agnostic service interfaces |
+| `ScreenShield` | Screenshot and screen-recording protection |
 
-### 3.3 Foundation Extension
+For example, to install only the Foundation extensions:
 
 ```ruby
 pod 'RyukieSwifty/Foundation'
 ```
 
-### 3.4 DeviceOrientation Extension
+Replace `Foundation` with any subspec name from the table to install another component.
 
+## Usage
 
-```ruby
-pod 'RyukieSwifty/FullScreen'
+Import the library where needed:
+
+```swift
+import RyukieSwifty
 ```
+
+### Interface orientation
+
+First, return the library's supported orientations from your `AppDelegate`:
+
+```swift
+func application(
+    _ application: UIApplication,
+    supportedInterfaceOrientationsFor window: UIWindow?
+) -> UIInterfaceOrientationMask {
+    application.swifty.supportedInterfaceOrientations
+}
+```
+
+Then manage full-screen state from your view controller:
+
+```swift
+final class VideoViewController: UIViewController {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        swifty.needFullScreen()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        swifty.exitFullScreen()
+    }
+
+    @IBAction private func toggleFullScreen(_ sender: UIButton) {
+        sender.isSelected
+            ? swifty.exitFullScreen()
+            : swifty.enterFullScreen()
+    }
+}
+```
+
+### Screen-capture protection
+
+`ScreenShieldView` supports iOS 13 and later. Add sensitive content to this view to hide it in screenshots and screen recordings.
+
+![ScreenShield demo](ScreenShield.gif)
 
 ```swift
 import UIKit
 import RyukieSwifty
 
-class FullScreenViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupUI()
-    }
-    
-    // MARK: - Life
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        swifty.exitFullScreen()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        swifty.needFullScreen()
-    }
-    
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        if size.width > size.height {
-            switchButton.isSelected = true
-        } else {
-            switchButton.isSelected = false
-        }
-    }
-    // MARK: - Function-Public
-    
-    // MARK: - Function-Private
-    
-    // MARK: UI
-    private func setupUI() {
-        view.backgroundColor = .white
-        
-        switchButton
-            .added(to: view)
-            .layout { make in
-                make?.center.equalToSuperview()
-            }
-    }
-    
-    // MARK: Buiness
-    
-    // MARK: Action
-    @objc
-    private func switchAction() {
-        switchButton.isSelected ? swifty.exitFullScreen() : swifty.enterFullScreen()
-    }
-    
-    // MARK: Request
-    
-    // MARK: - VarLet-Public
-    
-    // MARK: - VarLet-Private
-    private lazy var switchButton: UIButton = {
-        return UIButton()
-            .config {
-                $0.setTitleColor(.black, for: .normal)
-                $0.setTitle("切换为横屏", for: .normal)
-                $0.setTitle("切换为竖屏", for: .selected)
-                $0.addTarget(self, action: #selector(switchAction), for: .touchUpInside)
-            }
-    }()
-}
-
-extension AppDelegate {
-    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-        return application.swifty.supportedInterfaceOrientations
-    }
-}
-```
-
-### 3.5 Router Protocol
-
-```ruby
-pod 'RyukieSwifty/Router'
-```
-
-### 3.6 Service Protocol - MoyaStyleProtocol
-
-Make network request code more `Moya` style more `Swifty`. Didn`t depend on any framework, easy to change and extend.
-
-```ruby
-pod 'RyukieSwifty/SwiftyServiceProtocol'
-```
-
-### 3.7 ScreenShield (>= iOS13) - 截屏防护
-
-Light way to protect content in view form screenshort and record. Add contents you want to protect in `ScreenShieldView`, they will be hide during screenshort and record.
-
-![ScreenShield](ScreenShield.gif)
-
-```ruby
-pod 'RyukieSwifty/ScreenShield'
-```
-
-Swift - Demo: 
-
-```Swift
-import UIKit
-import RyukieSwifty
-
-class ViewController: UIViewController {
+final class SecureViewController: UIViewController {
     override func loadView() {
-        view = ScreenShieldView.create()
+        view = ScreenShieldView.create(frame: UIScreen.main.bounds)
     }
-    ...
 }
 ```
 
-OC - Demo:
+Objective-C:
 
-```C++
-#import "OCScreenShieldViewController.h"
+```objc
 @import RyukieSwifty;
-
-@interface OCScreenShieldViewController ()
-
-@end
-
-@implementation OCScreenShieldViewController
 
 - (void)loadView {
     self.view = [ScreenShieldView createWithFrame:UIScreen.mainScreen.bounds];
 }
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    UIView *cubeView = [[UIView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
-    cubeView.backgroundColor = [UIColor redColor];
-    [self.view addSubview:cubeView];
-    
-    self.view.backgroundColor = [UIColor grayColor];
-}
-
-@end
 ```
 
-## 4. Author
+> Screen-capture protection relies on the system's secure text-input rendering behavior. It is automatically disabled on iOS 15.1 to avoid a known crash. Test it thoroughly on every OS version and device you support before shipping.
 
-RyukieSama, ryukie.sama@gmail.com
+## Example project
+
+Clone the repository, then run:
+
+```bash
+cd Example
+pod install
+open Swifty.xcworkspace
+```
+
+## Contributing
+
+Bug reports and feature requests are welcome through [Issues](https://github.com/RyukieSama/Swifty/issues). Pull requests are also appreciated. Before submitting a change, please make sure the example project builds successfully.
+
+## Author
+
+RyukieSama · ryukie.sama@gmail.com
 
 ## License
 
-Swifty is available under the MIT license. See the LICENSE file for more info.
-
-
+RyukieSwifty is released under the MIT License. See [LICENSE](LICENSE) for details.
